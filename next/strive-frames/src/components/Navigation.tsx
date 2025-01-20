@@ -29,7 +29,7 @@ export function Navigation() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                  "px-3 py-2 text-sm font-medium transition-colors",
                   pathname === item.href
                     ? "bg-gray-900 text-white"
                     : "text-gray-700 hover:bg-gray-100"
