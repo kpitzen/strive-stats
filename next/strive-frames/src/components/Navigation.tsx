@@ -5,11 +5,9 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { href: "/characters", label: "Characters" },
-  { href: "/system-core", label: "System Core Data" },
-  { href: "/system-jump", label: "Jump Data" },
-  { href: "/gatling", label: "Gatling Tables" },
   { href: "/normal-moves", label: "Normal Moves" },
+  { href: "/special-moves", label: "Special Moves" },
+  { href: "/overdrive-moves", label: "Overdrive Moves" },
 ];
 
 export function Navigation() {
