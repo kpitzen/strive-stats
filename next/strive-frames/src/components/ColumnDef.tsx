@@ -16,5 +16,7 @@ export function createColumn<T>(column: Column<T>): ColumnDef<T> {
     header: () => column.header,
     cell: ({ getValue }) => <TableCell value={getValue()} />,
     size: column.size,
+    enableColumnFilter: true,
+    filterFn: 'includesString',
   };
 } 

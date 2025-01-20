@@ -109,18 +109,26 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
     );
   }, [data]);
 
-  const processedColumns = columns.map((col) => {
-    const key = (col as { accessorKey?: string }).accessorKey;
-    return {
-      ...col,
-      cell: key && (key.includes("Moves") || key === "cancelOptions")
-        ? ({ getValue }: { getValue: () => unknown }) => (
-            <ArrayCell value={getValue() as string[] | null} />
-          )
-        : col.cell,
-      filterFn: key === "level" ? levelFilterFn : undefined,
-    };
-  });
+  const processedColumns = useMemo(() => 
+    columns.map((col) => {
+      const key = (col as { accessorKey?: string }).accessorKey;
+      return {
+        ...col,
+        cell: key && (key.includes("Moves") || key === "cancelOptions")
+          ? ({ getValue }: { getValue: () => unknown }) => (
+              <ArrayCell value={getValue() as string[] | null} />
+            )
+          : col.cell,
+        enableColumnFilter: true,
+        filterFn: key === "level" 
+          ? levelFilterFn 
+          : DROPDOWN_FILTER_COLUMNS.includes(key || "") 
+            ? "equals" as const
+            : "includesString" as const,
+      } as ColumnDef<TData, TValue>;
+    }),
+    [columns]
+  );
 
   const table = useReactTable({
     data,
