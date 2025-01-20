@@ -487,7 +487,44 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": ""
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "632146H",
+      "name": "Ventania",
+      "damage": "17\u00d74, 71",
+      "guard": "All",
+      "startup": "5+4",
+      "active": "4(4)4(4)4(4)4(4)7",
+      "recovery": "49",
+      "on_block": "-37",
+      "on_hit": "HKD +18",
+      "level": "4",
+      "counter_type": "Mid",
+      "invuln": "1-10F Full",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "400\u00d75",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "j.236236H",
+      "name": "Tempestade",
+      "damage": "39, 10\u00d72, 9x3, 19, 28",
+      "guard": "All",
+      "startup": "3+1",
+      "active": "Until L",
+      "recovery": "",
+      "on_block": "0~+6",
+      "on_hit": "HKD +36",
+      "level": "3",
+      "counter_type": "Mid",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "2000",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

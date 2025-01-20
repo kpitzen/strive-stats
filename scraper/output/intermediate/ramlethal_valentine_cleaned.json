@@ -329,7 +329,7 @@
       "name": "H Bajoneto",
       "damage": "40, 30",
       "guard": "All",
-      "startup": 20,
+      "startup": "20",
       "active": "Until Wall (34) 15",
       "recovery": "Total 43",
       "on_block": "+33",
@@ -495,7 +495,42 @@
       "risc_loss": "1000 (Once)"
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "input": "632146H",
+      "name": "Calvados",
+      "damage": "4\u00d7729, 70",
+      "guard": "All (Guard Crush)",
+      "startup": "11+13",
+      "active": 60,
+      "recovery": 17,
+      "on_block": "+16",
+      "on_hit": "HKD +72",
+      "level": 1,
+      "counter_type": "Small",
+      "invuln": "",
+      "proration": "100%",
+      "risc_gain": "100\u00d730",
+      "risc_loss": "1000 (Once)"
+    },
+    {
+      "input": "236236S",
+      "name": "Mortobato",
+      "damage": "118 [92] {66}",
+      "guard": "All",
+      "startup": "7+2",
+      "active": 6,
+      "recovery": 51,
+      "on_block": "-38 [-40] {-43}",
+      "on_hit": "HKD +28",
+      "level": "4 [3] {2}",
+      "counter_type": "Mid",
+      "invuln": "1-14F Full",
+      "proration": "100%",
+      "risc_gain": "2500 [2000] {1500}",
+      "risc_loss": 1000
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

@@ -101,7 +101,7 @@
       "input": "5[D]",
       "damage": 56,
       "guard": "High",
-      "startup": "28",
+      "startup": 28,
       "active": 3,
       "recovery": 26,
       "on_block": -10,
@@ -446,19 +446,19 @@
     {
       "input": "214K",
       "name": "Possession",
-      "damage": null,
-      "guard": null,
+      "damage": "",
+      "guard": "",
       "startup": 16,
       "active": "",
       "recovery": "Total 31",
-      "on_block": null,
-      "on_hit": null,
-      "level": null,
-      "counter_type": null,
+      "on_block": "",
+      "on_hit": "",
+      "level": "",
+      "counter_type": "",
       "invuln": "16-25F Full",
-      "proration": null,
-      "risc_gain": null,
-      "risc_loss": null
+      "proration": "",
+      "risc_gain": "",
+      "risc_loss": ""
     },
     {
       "input": "214S",
@@ -495,7 +495,42 @@
       "risc_loss": 1000
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "input": "236236P",
+      "name": "Nostrovia",
+      "damage": "20\u00d72, 57",
+      "guard": "All",
+      "startup": "11+19",
+      "active": "6, (20), 6, (24), 4",
+      "recovery": "Total 53",
+      "on_block": "+63",
+      "on_hit": "HKD +134",
+      "level": 3,
+      "counter_type": "Very Small",
+      "invuln": "",
+      "proration": "100%",
+      "risc_gain": "100\u00d73",
+      "risc_loss": 1000
+    },
+    {
+      "input": "236236K",
+      "name": "Calamity One",
+      "damage": 123,
+      "guard": "All",
+      "startup": "11+4",
+      "active": 5,
+      "recovery": 67,
+      "on_block": -38,
+      "on_hit": "HKD +48",
+      "level": 4,
+      "counter_type": "Very Small",
+      "invuln": "1-19F Full",
+      "proration": "100%",
+      "risc_gain": 500,
+      "risc_loss": 1000
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

@@ -777,7 +777,44 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": ""
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "632146S",
+      "name": "call 13C",
+      "damage": "",
+      "guard": "",
+      "startup": "4",
+      "active": "300",
+      "recovery": "Total 12",
+      "on_block": "",
+      "on_hit": "",
+      "level": "",
+      "counter_type": "",
+      "invuln": "",
+      "proration": "",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "",
+      "r\u2024i\u2024s\u2024c\u2024_loss": ""
+    },
+    {
+      "": "",
+      "input": "632146H",
+      "name": "call 4CC",
+      "damage": "133",
+      "guard": "All",
+      "startup": "9+4",
+      "active": "3",
+      "recovery": "70",
+      "on_block": "-39",
+      "on_hit": "HKD +43",
+      "level": "4",
+      "counter_type": "",
+      "invuln": "1-13F Full",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "500",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

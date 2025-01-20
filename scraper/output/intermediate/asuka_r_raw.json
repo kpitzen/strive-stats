@@ -434,7 +434,44 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": ""
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "632146P/K",
+      "name": "Submicron Particle Sphere",
+      "damage": "22\u00d75",
+      "guard": "All [Guard Crush]",
+      "startup": "6+1",
+      "active": "Until Hit",
+      "recovery": "Total 32",
+      "on_block": "+6 [+17]",
+      "on_hit": "KD",
+      "level": "4x5",
+      "counter_type": "Very Small",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "300",
+      "r\u2024i\u2024s\u2024c\u2024_loss": ""
+    },
+    {
+      "": "",
+      "input": "632146S",
+      "name": "Bookmark (Full Order)",
+      "damage": "",
+      "guard": "",
+      "startup": "16",
+      "active": "",
+      "recovery": "Total 17",
+      "on_block": "",
+      "on_hit": "",
+      "level": "",
+      "counter_type": "",
+      "invuln": "",
+      "proration": "",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "",
+      "r\u2024i\u2024s\u2024c\u2024_loss": ""
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

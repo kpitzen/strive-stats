@@ -540,7 +540,44 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "632146S",
+      "name": "Stahl Wirbel",
+      "damage": "160",
+      "guard": "All",
+      "startup": "4+1",
+      "active": "",
+      "recovery": "Total 27F",
+      "on_block": "+14",
+      "on_hit": "HKD +67",
+      "level": "4",
+      "counter_type": "Very Small",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "500",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "632146H",
+      "name": "Leidenschaft des Dirigenten",
+      "damage": "17*4,42",
+      "guard": "All",
+      "startup": "10+1",
+      "active": "8(15)12(13)8(10)8(44)6",
+      "recovery": "43",
+      "on_block": "-33",
+      "on_hit": "HKD +34",
+      "level": "4",
+      "counter_type": "Mid",
+      "invuln": "1-18 Full",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "500\u00d75",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

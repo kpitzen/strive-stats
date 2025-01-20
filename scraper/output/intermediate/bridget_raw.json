@@ -558,7 +558,44 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": "2500"
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "632146S",
+      "name": "Loop the Loop",
+      "damage": "[9, 6]\u00d76, 9, 71",
+      "guard": "Mid",
+      "startup": "9+2",
+      "active": "45",
+      "recovery": "47",
+      "on_block": "-29",
+      "on_hit": "HKD +53",
+      "level": "2",
+      "counter_type": "Mid",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "[300, 100]\u00d77",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "632146H",
+      "name": "Return of the Killing Machine",
+      "damage": "15\u00d77",
+      "guard": "All",
+      "startup": "9+1",
+      "active": "~",
+      "recovery": "Total 37",
+      "on_block": "+16",
+      "on_hit": "HKD +74",
+      "level": "2",
+      "counter_type": "Very Small",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "100\u00d75",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

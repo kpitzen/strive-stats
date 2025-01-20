@@ -615,7 +615,62 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": "2000"
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "632146H",
+      "name": "Megalomania",
+      "damage": "13\u00d718 (17\u00d711)",
+      "guard": "Ground Throw (All)",
+      "startup": "11+0(41)",
+      "active": "",
+      "recovery": "",
+      "on_block": "N/A (-18)",
+      "on_hit": "HKD +69 (HKD +41)",
+      "level": "N/A (2)",
+      "counter_type": "",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "632146S",
+      "name": "Ultimate Fortissimo",
+      "damage": "40,18x2,89",
+      "guard": "All (Guard Crush)",
+      "startup": "7+2",
+      "active": "4 (42) 9",
+      "recovery": "13",
+      "on_block": "+26",
+      "on_hit": "HKD +59",
+      "level": "4",
+      "counter_type": "",
+      "invuln": "1-11F Full",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "j.632146S",
+      "name": "Air Ultimate Fortissimo",
+      "damage": "18\u00d72,89",
+      "guard": "All (Guard Crush)",
+      "startup": "5+3",
+      "active": "",
+      "recovery": "",
+      "on_block": "+37",
+      "on_hit": "",
+      "level": "",
+      "counter_type": "",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000\u00d72"
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

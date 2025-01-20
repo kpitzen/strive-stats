@@ -560,7 +560,44 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": "2000"
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "236236S",
+      "name": "Septem Voices",
+      "damage": "20\u00d72,60",
+      "guard": "All",
+      "startup": "4+5",
+      "active": "Until corner",
+      "recovery": "Total 43",
+      "on_block": "+8",
+      "on_hit": "HKD +77",
+      "level": "2,2,4",
+      "counter_type": "Very Small",
+      "invuln": "9-26F Airborne",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "100\u00d73",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "632146H",
+      "name": "Winger",
+      "damage": "16\u00d75,50",
+      "guard": "All",
+      "startup": "8+1",
+      "active": "10(9)15",
+      "recovery": "40",
+      "on_block": "-32",
+      "on_hit": "HKD +21",
+      "level": "4",
+      "counter_type": "Mid",
+      "invuln": "1-8F Full7-40F Airborne",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "400\u00d75, 500",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

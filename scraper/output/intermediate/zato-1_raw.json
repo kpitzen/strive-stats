@@ -632,7 +632,62 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": ""
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "632146H",
+      "name": "Amorphous",
+      "damage": "135",
+      "guard": "All",
+      "startup": "8+8",
+      "active": "",
+      "recovery": "Total 43",
+      "on_block": "+12",
+      "on_hit": "HKD +82",
+      "level": "4",
+      "counter_type": "",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "500",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "632146S",
+      "name": "Sun Void",
+      "damage": "24\u00d73",
+      "guard": "All",
+      "startup": "11+14",
+      "active": "",
+      "recovery": "",
+      "on_block": "+3",
+      "on_hit": "KD +61",
+      "level": "4",
+      "counter_type": "",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "100\u00d73",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "j.632146S",
+      "name": "Sun Void",
+      "damage": "24\u00d73",
+      "guard": "All",
+      "startup": "11+14",
+      "active": "",
+      "recovery": "",
+      "on_block": "",
+      "on_hit": "KD",
+      "level": "4",
+      "counter_type": "",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "100\u00d73",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

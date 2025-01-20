@@ -560,7 +560,62 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "632146S",
+      "name": "Heavenly Potemkin Buster",
+      "damage": "220",
+      "guard": "Air Throw",
+      "startup": "12+0",
+      "active": "15",
+      "recovery": "16",
+      "on_block": "",
+      "on_hit": "HKD +55",
+      "level": "",
+      "counter_type": "Very Small",
+      "invuln": "1-14F Full",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "632146H",
+      "name": "Giganter Kai",
+      "damage": "60",
+      "guard": "All",
+      "startup": "10+1",
+      "active": "5",
+      "recovery": "17",
+      "on_block": "+100",
+      "on_hit": "HKD +141",
+      "level": "",
+      "counter_type": "Mid",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "2500",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "Mirror",
+      "name": "Giganter Kai (Barrier)",
+      "damage": "15\u00d73",
+      "guard": "All",
+      "startup": "10+23",
+      "active": "464",
+      "recovery": "",
+      "on_block": "",
+      "on_hit": "HKD",
+      "level": "",
+      "counter_type": "Very Small",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "100\u00d73",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

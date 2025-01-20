@@ -525,7 +525,44 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "236236P",
+      "name": "Nostrovia",
+      "damage": "20\u00d72, 57",
+      "guard": "All",
+      "startup": "11+19",
+      "active": "6, (20), 6, (24), 4",
+      "recovery": "Total 53",
+      "on_block": "+63",
+      "on_hit": "HKD +134",
+      "level": "3",
+      "counter_type": "Very Small",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "100\u00d73",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "236236K",
+      "name": "Calamity One",
+      "damage": "123",
+      "guard": "All",
+      "startup": "11+4",
+      "active": "5",
+      "recovery": "67",
+      "on_block": "-38",
+      "on_hit": "HKD +48",
+      "level": "4",
+      "counter_type": "Very Small",
+      "invuln": "1-19F Full",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "500",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

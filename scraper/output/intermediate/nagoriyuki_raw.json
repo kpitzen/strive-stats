@@ -1014,7 +1014,44 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": "2500"
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "632146S",
+      "name": "Wasureyuki",
+      "damage": "65, 2\u00d717, 52 [65]",
+      "guard": "All",
+      "startup": "7+(173 Flash)+2",
+      "active": "2",
+      "recovery": "54",
+      "on_block": "-39",
+      "on_hit": "HKD +39 [HKD +73]",
+      "level": "3",
+      "counter_type": "Mid",
+      "invuln": "1-10F Full",
+      "proration": "",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "2000",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "632146H",
+      "name": "Zansetsu",
+      "damage": "200",
+      "guard": "All",
+      "startup": "11+(58 Flash)+10",
+      "active": "6",
+      "recovery": "80",
+      "on_block": "-66",
+      "on_hit": "HKD +15",
+      "level": "4",
+      "counter_type": "Very Small",
+      "invuln": "1-26F Full",
+      "proration": "",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "2500",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

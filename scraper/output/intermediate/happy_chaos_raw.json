@@ -526,7 +526,44 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": ""
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "632146S",
+      "name": "Deus Ex Machina",
+      "damage": "18, 1\u00d717, 92",
+      "guard": "All",
+      "startup": "13+(193 Flash)+7",
+      "active": "",
+      "recovery": "",
+      "on_block": "-25",
+      "on_hit": "HKD +31",
+      "level": "2\u00d718, 4",
+      "counter_type": "Small",
+      "invuln": "",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "100\u00d719",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000 (Once)"
+    },
+    {
+      "": "",
+      "input": "214214P",
+      "name": "Super Focus",
+      "damage": "",
+      "guard": "",
+      "startup": "5",
+      "active": "(52 Flash)",
+      "recovery": "Total 11",
+      "on_block": "",
+      "on_hit": "",
+      "level": "",
+      "counter_type": "",
+      "invuln": "",
+      "proration": "",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "",
+      "r\u2024i\u2024s\u2024c\u2024_loss": ""
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

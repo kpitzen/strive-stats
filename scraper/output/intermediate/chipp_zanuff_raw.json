@@ -613,7 +613,62 @@
       "r\u2024i\u2024s\u2024c\u2024_loss": ""
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "": "",
+      "input": "236236P",
+      "name": "Banki Messai",
+      "damage": "14\u00d75, 7\u00d73, 28",
+      "guard": "All",
+      "startup": "6+1~11",
+      "active": "1(7)2(9)2(7)4(12)9",
+      "recovery": "28",
+      "on_block": "-20",
+      "on_hit": "HKD +50",
+      "level": "",
+      "counter_type": "Very Small",
+      "invuln": "3~6 Full",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "400\u00d74",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "632146H",
+      "name": "Zansei Rouga",
+      "damage": "10\u00d74, 150",
+      "guard": "All",
+      "startup": "20+1",
+      "active": "58~64",
+      "recovery": "49~53",
+      "on_block": "",
+      "on_hit": "HKD +22",
+      "level": "",
+      "counter_type": "Very Small",
+      "invuln": "6-22 Full",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "600\u00d74",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    },
+    {
+      "": "",
+      "input": "j.632146H",
+      "name": "Air Zansei Rouga",
+      "damage": "10\u00d74, 150",
+      "guard": "All",
+      "startup": "13+1",
+      "active": "54~64",
+      "recovery": "Until Landing+20",
+      "on_block": "",
+      "on_hit": "HKD +23",
+      "level": "",
+      "counter_type": "Very Small",
+      "invuln": "4-15 Full",
+      "proration": "100%",
+      "r\u2024i\u2024s\u2024c\u2024_gain": "600\u00d74",
+      "r\u2024i\u2024s\u2024c\u2024_loss": "1000"
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }

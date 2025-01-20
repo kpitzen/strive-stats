@@ -25,7 +25,7 @@
       "active": 3,
       "recovery": 12,
       "on_block": -3,
-      "on_hit": 0,
+      "on_hit": "+0",
       "level": 1,
       "counter_type": "Small",
       "invuln": "",
@@ -105,7 +105,7 @@
       "active": 3,
       "recovery": 12,
       "on_block": -3,
-      "on_hit": 0,
+      "on_hit": "+0",
       "level": 1,
       "counter_type": "Small",
       "invuln": "",
@@ -297,7 +297,7 @@
       "active": 3,
       "recovery": 26,
       "on_block": -15,
-      "on_hit": 0,
+      "on_hit": "+0",
       "level": 2,
       "counter_type": "Mid",
       "invuln": "",
@@ -409,7 +409,42 @@
       "risc_loss": ""
     }
   ],
-  "overdrive_moves": [],
+  "overdrive_moves": [
+    {
+      "input": "632146P/K",
+      "name": "Submicron Particle Sphere",
+      "damage": "22\u00d75",
+      "guard": "All [Guard Crush]",
+      "startup": "6+1",
+      "active": "Until Hit",
+      "recovery": 32,
+      "on_block": "+6 [+17]",
+      "on_hit": "KD",
+      "level": "4x5",
+      "counter_type": "Very Small",
+      "invuln": "",
+      "proration": "100%",
+      "risc_gain": 300,
+      "risc_loss": ""
+    },
+    {
+      "input": "632146S",
+      "name": "Bookmark (Full Order)",
+      "damage": "",
+      "guard": "",
+      "startup": 16,
+      "active": "",
+      "recovery": 17,
+      "on_block": "",
+      "on_hit": "",
+      "level": "",
+      "counter_type": "",
+      "invuln": "",
+      "proration": "",
+      "risc_gain": "",
+      "risc_loss": ""
+    }
+  ],
   "system_core": [],
   "system_jump": []
 }
