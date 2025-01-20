@@ -64,7 +64,9 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = useState<SortingState>([]);
+  const [sorting, setSorting] = useState<SortingState>([
+    { id: "character", desc: false }
+  ]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   // Extract unique values for dropdown filters
