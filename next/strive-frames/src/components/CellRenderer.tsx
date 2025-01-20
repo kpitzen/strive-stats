@@ -5,7 +5,7 @@ import { TableCell } from "./TableCell";
 
 export function CellRenderer<TData>() {
   return function Cell(props: CellContext<TData, unknown>) {
-    return <TableCell {...props} type="array" />;
+    return <TableCell value={props.getValue()} />;
   };
 }
 

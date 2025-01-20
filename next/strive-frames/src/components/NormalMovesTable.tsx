@@ -6,7 +6,7 @@ import { ColumnHeader } from "@/components/ColumnHeader";
 import { TableHeader } from "@/components/TableHeader";
 import { createColumn } from "@/components/ColumnDef";
 
-interface NormalMoves {
+interface NormalMoves extends Record<string, unknown> {
   id: number;
   character: string;
   tableName: string;
@@ -168,5 +168,5 @@ interface NormalMovesTableProps {
 }
 
 export function NormalMovesTable({ data }: NormalMovesTableProps) {
-  return <DataTable columns={columns} data={data} />;
+  return <DataTable<NormalMoves, unknown> columns={columns} data={data} />;
 } 

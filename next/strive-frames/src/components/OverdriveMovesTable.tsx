@@ -6,7 +6,7 @@ import { ColumnHeader } from "@/components/ColumnHeader";
 import { TableHeader } from "@/components/TableHeader";
 import { createColumn } from "@/components/ColumnDef";
 
-interface OverdriveMoves {
+interface OverdriveMoves extends Record<string, unknown> {
   id: number;
   character: string;
   tableName: string;
@@ -178,5 +178,5 @@ interface OverdriveMovesTableProps {
 }
 
 export function OverdriveMovesTable({ data }: OverdriveMovesTableProps) {
-  return <DataTable columns={columns} data={data} />;
+  return <DataTable<OverdriveMoves, unknown> columns={columns} data={data} />;
 } 

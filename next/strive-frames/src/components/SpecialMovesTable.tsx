@@ -6,7 +6,7 @@ import { ColumnHeader } from "@/components/ColumnHeader";
 import { TableHeader } from "@/components/TableHeader";
 import { createColumn } from "@/components/ColumnDef";
 
-interface SpecialMoves {
+interface SpecialMoves extends Record<string, unknown> {
   id: number;
   character: string;
   tableName: string;
@@ -178,5 +178,5 @@ interface SpecialMovesTableProps {
 }
 
 export function SpecialMovesTable({ data }: SpecialMovesTableProps) {
-  return <DataTable columns={columns} data={data} />;
+  return <DataTable<SpecialMoves, unknown> columns={columns} data={data} />;
 } 
