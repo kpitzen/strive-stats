@@ -14,8 +14,8 @@
       "counter_type": "Small",
       "invuln": "",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 1500
+      "risc_gain": 500,
+      "risc_loss": 1500
     },
     {
       "input": "5K",
@@ -30,8 +30,8 @@
       "counter_type": "Small",
       "invuln": "",
       "proration": "90%",
-      "risk_gain": 1000,
-      "risk_loss": 1000
+      "risc_gain": 1000,
+      "risc_loss": 1000
     },
     {
       "input": "c.S",
@@ -41,17 +41,17 @@
       "active": 6,
       "recovery": 12,
       "on_block": -1,
-      "on_hit": 2,
+      "on_hit": "+2",
       "level": 3,
       "counter_type": "Mid",
       "invuln": "",
       "proration": "100%",
-      "risk_gain": 2000,
-      "risk_loss": 1000
+      "risc_gain": 2000,
+      "risc_loss": 1000
     },
     {
       "input": "f.S",
-      "damage": "10x5",
+      "damage": "10\u00d75",
       "guard": "All",
       "startup": 12,
       "active": "2,2,2,2,2",
@@ -62,24 +62,24 @@
       "counter_type": "Mid",
       "invuln": "",
       "proration": "90%",
-      "risk_gain": "300x5",
-      "risk_loss": 1000
+      "risc_gain": "300\u00d75",
+      "risc_loss": 1000
     },
     {
       "input": "5H",
-      "damage": "20x3",
+      "damage": "20\u00d73",
       "guard": "All",
       "startup": 12,
       "active": "6,6,6",
       "recovery": 15,
       "on_block": -4,
-      "on_hit": 69,
+      "on_hit": "+69",
       "level": 3,
       "counter_type": "Large",
       "invuln": "",
       "proration": "90%",
-      "risk_gain": "600x3",
-      "risk_loss": 1000
+      "risc_gain": "600\u00d73",
+      "risc_loss": 1000
     },
     {
       "input": "2P",
@@ -89,13 +89,13 @@
       "active": 3,
       "recovery": 8,
       "on_block": -1,
-      "on_hit": 2,
+      "on_hit": "+2",
       "level": 0,
       "counter_type": "Small",
       "invuln": "",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 1500
+      "risc_gain": 500,
+      "risc_loss": 1500
     },
     {
       "input": "2K",
@@ -110,8 +110,8 @@
       "counter_type": "Small",
       "invuln": "",
       "proration": "70%",
-      "risk_gain": 750,
-      "risk_loss": 1000
+      "risc_gain": 750,
+      "risc_loss": 1000
     },
     {
       "input": "2S",
@@ -126,8 +126,8 @@
       "counter_type": "Mid",
       "invuln": "",
       "proration": "90%",
-      "risk_gain": 1500,
-      "risk_loss": 1000
+      "risc_gain": 1500,
+      "risc_loss": 1000
     },
     {
       "input": "2H",
@@ -142,8 +142,8 @@
       "counter_type": "Large",
       "invuln": "",
       "proration": "90%",
-      "risk_gain": 2500,
-      "risk_loss": 1000
+      "risc_gain": 2500,
+      "risc_loss": 1000
     },
     {
       "input": "j.P",
@@ -158,8 +158,8 @@
       "counter_type": "Small",
       "invuln": "",
       "proration": "80%",
-      "risk_gain": 375,
-      "risk_loss": 1000
+      "risc_gain": 375,
+      "risc_loss": 1000
     },
     {
       "input": "j.K",
@@ -174,8 +174,8 @@
       "counter_type": "Small",
       "invuln": "",
       "proration": "80%",
-      "risk_gain": 750,
-      "risk_loss": 1000
+      "risc_gain": 750,
+      "risc_loss": 1000
     },
     {
       "input": "j.S",
@@ -190,8 +190,8 @@
       "counter_type": "Mid",
       "invuln": "",
       "proration": "80%",
-      "risk_gain": 1125,
-      "risk_loss": 1000
+      "risc_gain": 1125,
+      "risc_loss": 1000
     },
     {
       "input": "j.H",
@@ -206,8 +206,8 @@
       "counter_type": "Large",
       "invuln": "",
       "proration": "80%",
-      "risk_gain": 1125,
-      "risk_loss": 1000
+      "risc_gain": 1125,
+      "risc_loss": 1000
     },
     {
       "input": "j.D",
@@ -222,8 +222,8 @@
       "counter_type": "Very Small",
       "invuln": "",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 1000
+      "risc_gain": 500,
+      "risc_loss": 1000
     },
     {
       "input": "6P",
@@ -236,10 +236,10 @@
       "on_hit": -9,
       "level": 2,
       "counter_type": "Mid",
-      "invuln": "1-2f Upper Body3-17f Above Knees",
+      "invuln": "1-2f Upper Body 3-17f Above Knees",
       "proration": "90%",
-      "risk_gain": 1500,
-      "risk_loss": 1000
+      "risc_gain": 1500,
+      "risc_loss": 1000
     },
     {
       "input": "6H",
@@ -254,8 +254,8 @@
       "counter_type": "Large",
       "invuln": "",
       "proration": "90%",
-      "risk_gain": 2500,
-      "risk_loss": 1000
+      "risc_gain": 2500,
+      "risc_loss": 1000
     },
     {
       "input": "6[H]",
@@ -270,8 +270,8 @@
       "counter_type": "Large",
       "invuln": "",
       "proration": "90%",
-      "risk_gain": 2500,
-      "risk_loss": 1000
+      "risc_gain": 2500,
+      "risc_loss": 1000
     },
     {
       "input": "2D",
@@ -286,8 +286,8 @@
       "counter_type": "Large",
       "invuln": "",
       "proration": "90%",
-      "risk_gain": 1500,
-      "risk_loss": 1000
+      "risc_gain": 1500,
+      "risc_loss": 1000
     },
     {
       "input": "5D",
@@ -302,8 +302,8 @@
       "counter_type": "Mid",
       "invuln": "",
       "proration": "80%",
-      "risk_gain": 1125,
-      "risk_loss": "3000 [1000]"
+      "risc_gain": 1125,
+      "risc_loss": "3000 [1000]"
     },
     {
       "input": "5[D]",
@@ -318,8 +318,8 @@
       "counter_type": "Mid",
       "invuln": "",
       "proration": "100%",
-      "risk_gain": 1875,
-      "risk_loss": "1500 [1000]"
+      "risc_gain": 1875,
+      "risc_loss": "1500 [1000]"
     }
   ],
   "special_moves": [
@@ -337,8 +337,8 @@
       "counter_type": "Very Small",
       "invuln": "",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 2000
+      "risc_gain": 500,
+      "risc_loss": 2000
     },
     {
       "input": "236S~6S/236H~6H",
@@ -354,8 +354,8 @@
       "counter_type": "",
       "invuln": "",
       "proration": "",
-      "risk_gain": "",
-      "risk_loss": 1000
+      "risc_gain": "",
+      "risc_loss": 1000
     },
     {
       "input": "236K",
@@ -365,18 +365,18 @@
       "startup": "13 [40]",
       "active": "",
       "recovery": "Total 63",
-      "on_block": "+5 ~ +8 (point blank)",
+      "on_block": "About +5 ~ +8 (point blank)",
       "on_hit": "HKD +61 (point blank)",
       "level": "4,2,2",
       "counter_type": "Very Small",
       "invuln": "",
       "proration": "80%",
-      "risk_gain": "100x3",
-      "risk_loss": 1000
+      "risc_gain": "100\u00d73",
+      "risc_loss": 1000
     },
     {
       "input": "214P/K",
-      "name": "We Talked a Lot Together",
+      "name": "We Talked A Lot Together",
       "damage": 34,
       "guard": "All",
       "startup": 29,
@@ -388,8 +388,8 @@
       "counter_type": "Very Small",
       "invuln": "",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 1000
+      "risc_gain": 500,
+      "risc_loss": 1000
     },
     {
       "input": "214S",
@@ -405,8 +405,8 @@
       "counter_type": "Mid",
       "invuln": "",
       "proration": "90%",
-      "risk_gain": 2500,
-      "risk_loss": 1000
+      "risc_gain": 2500,
+      "risc_loss": 1000
     },
     {
       "input": "214H",
@@ -422,8 +422,8 @@
       "counter_type": "Large",
       "invuln": "",
       "proration": "90%",
-      "risk_gain": 2500,
-      "risk_loss": 2000
+      "risc_gain": 2500,
+      "risc_loss": 2000
     },
     {
       "input": "22H",
@@ -438,9 +438,9 @@
       "level": "",
       "counter_type": "",
       "invuln": "",
-      "proration": "",
-      "risk_gain": "",
-      "risk_loss": ""
+      "proration": "s",
+      "risc_gain": "",
+      "risc_loss": ""
     },
     {
       "input": "!H",
@@ -456,16 +456,16 @@
       "counter_type": "",
       "invuln": "",
       "proration": "",
-      "risk_gain": "",
-      "risk_loss": ""
+      "risc_gain": "",
+      "risc_loss": ""
     }
   ],
   "overdrive_moves": [
     {
       "input": "632146S",
       "name": "Imperial Ray",
-      "damage": "20,12x3,16,12x2,60",
-      "guard": "All",
+      "damage": "20,12\u00d73,16,12x2,60",
+      "guard": "",
       "startup": "11+1",
       "active": 9,
       "recovery": 54,
@@ -475,13 +475,13 @@
       "counter_type": "",
       "invuln": "1-20F Full",
       "proration": "100%",
-      "risk_gain": 2000,
-      "risk_loss": "1000x2"
+      "risc_gain": 2000,
+      "risc_loss": "1000\u00d72"
     },
     {
       "input": "632146H",
       "name": "Gamma Ray",
-      "damage": "1x41, 239",
+      "damage": "1\u00d741, 239",
       "guard": "All",
       "startup": "19+7",
       "active": "",
@@ -492,8 +492,8 @@
       "counter_type": "Very Small",
       "invuln": "",
       "proration": "100%",
-      "risk_gain": "100x42",
-      "risk_loss": "1000x2"
+      "risc_gain": "100\u00d742",
+      "risc_loss": "1000\u00d72"
     }
   ],
   "system_core": [],

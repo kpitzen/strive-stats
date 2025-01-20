@@ -12,10 +12,10 @@
       "on_hit": 1,
       "level": 0,
       "counter_type": "Small",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 1500
+      "risc_gain": 500,
+      "risc_loss": 1500
     },
     {
       "input": "5K",
@@ -28,10 +28,10 @@
       "on_hit": 0,
       "level": 0,
       "counter_type": "Small",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 1500
+      "risc_gain": 500,
+      "risc_loss": 1500
     },
     {
       "input": "c.S",
@@ -44,10 +44,10 @@
       "on_hit": 4,
       "level": 3,
       "counter_type": "Mid",
-      "invuln": null,
+      "invuln": "",
       "proration": "100%",
-      "risk_gain": 2000,
-      "risk_loss": 1000
+      "risc_gain": 2000,
+      "risc_loss": 1000
     },
     {
       "input": "f.S",
@@ -60,10 +60,10 @@
       "on_hit": -5,
       "level": 2,
       "counter_type": "Mid",
-      "invuln": null,
+      "invuln": "",
       "proration": "90%",
-      "risk_gain": 1500,
-      "risk_loss": 1000
+      "risc_gain": 1500,
+      "risc_loss": 1000
     },
     {
       "input": "5H",
@@ -76,10 +76,10 @@
       "on_hit": -1,
       "level": 4,
       "counter_type": "Large",
-      "invuln": null,
+      "invuln": "",
       "proration": "90%",
-      "risk_gain": 2500,
-      "risk_loss": 1000
+      "risc_gain": 2500,
+      "risc_loss": 1000
     },
     {
       "input": "2P",
@@ -92,10 +92,10 @@
       "on_hit": 1,
       "level": 0,
       "counter_type": "Small",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 1500
+      "risc_gain": 500,
+      "risc_loss": 1500
     },
     {
       "input": "2K",
@@ -108,10 +108,10 @@
       "on_hit": 1,
       "level": 0,
       "counter_type": "Small",
-      "invuln": null,
+      "invuln": "",
       "proration": "70%",
-      "risk_gain": 375,
-      "risk_loss": 1000
+      "risc_gain": 375,
+      "risc_loss": 1000
     },
     {
       "input": "2S",
@@ -124,10 +124,10 @@
       "on_hit": -4,
       "level": 2,
       "counter_type": "Mid",
-      "invuln": null,
+      "invuln": "",
       "proration": "90%",
-      "risk_gain": 1500,
-      "risk_loss": 1000
+      "risc_gain": 1500,
+      "risc_loss": 1000
     },
     {
       "input": "2H",
@@ -140,10 +140,10 @@
       "on_hit": "KD +28",
       "level": 4,
       "counter_type": "Large",
-      "invuln": null,
+      "invuln": "",
       "proration": "90%",
-      "risk_gain": 2500,
-      "risk_loss": 1000
+      "risc_gain": 2500,
+      "risc_loss": 1000
     },
     {
       "input": "j.P",
@@ -156,10 +156,10 @@
       "on_hit": "+5 (IAD j.PPP)",
       "level": 0,
       "counter_type": "Small",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": 375,
-      "risk_loss": 1000
+      "risc_gain": 375,
+      "risc_loss": 1000
     },
     {
       "input": "j.K",
@@ -172,10 +172,10 @@
       "on_hit": "+4 (IAD)",
       "level": 1,
       "counter_type": "Small",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": "375\u00d72",
-      "risk_loss": 1000
+      "risc_gain": "375\u00d72",
+      "risc_loss": 1000
     },
     {
       "input": "j.S",
@@ -188,10 +188,10 @@
       "on_hit": "+4 (IAD)",
       "level": 2,
       "counter_type": "Mid",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": 1125,
-      "risk_loss": 1000
+      "risc_gain": 1125,
+      "risc_loss": 1000
     },
     {
       "input": "j.H",
@@ -204,10 +204,10 @@
       "on_hit": "+7~8 (IAD)",
       "level": 2,
       "counter_type": "Mid",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": "525\u00d72",
-      "risk_loss": 1000
+      "risc_gain": "525\u00d72",
+      "risc_loss": 1000
     },
     {
       "input": "j.D",
@@ -220,10 +220,10 @@
       "on_hit": "+3 (IAD)",
       "level": 2,
       "counter_type": "Mid",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": 1125,
-      "risk_loss": 1000
+      "risc_gain": 1125,
+      "risc_loss": 1000
     },
     {
       "input": "6P",
@@ -236,10 +236,10 @@
       "on_hit": -13,
       "level": 2,
       "counter_type": "Mid",
-      "invuln": "1-2 Upper Body 3-13 Above Knee",
+      "invuln": "1-2 Upper Body3-13 Above Knee",
       "proration": "90%",
-      "risk_gain": 1500,
-      "risk_loss": 1000
+      "risc_gain": 1500,
+      "risc_loss": 1000
     },
     {
       "input": "6K",
@@ -252,10 +252,10 @@
       "on_hit": 6,
       "level": 2,
       "counter_type": "Small",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": 750,
-      "risk_loss": 1000
+      "risc_gain": 750,
+      "risc_loss": 1000
     },
     {
       "input": "6H",
@@ -268,10 +268,10 @@
       "on_hit": -2,
       "level": 4,
       "counter_type": "Large",
-      "invuln": null,
+      "invuln": "",
       "proration": "90%",
-      "risk_gain": 2500,
-      "risk_loss": 1000
+      "risc_gain": 2500,
+      "risc_loss": 1000
     },
     {
       "input": "j.2K",
@@ -284,10 +284,10 @@
       "on_hit": "+6 (IAD)",
       "level": 1,
       "counter_type": "Very Small",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": "150\u00d7N",
-      "risk_loss": 1000
+      "risc_gain": "150\u00d7N",
+      "risc_loss": 1000
     },
     {
       "input": "2D",
@@ -300,10 +300,10 @@
       "on_hit": "HKD +51",
       "level": 2,
       "counter_type": "Large",
-      "invuln": null,
+      "invuln": "",
       "proration": "90%",
-      "risk_gain": 1125,
-      "risk_loss": 1000
+      "risc_gain": 1125,
+      "risc_loss": 1000
     },
     {
       "input": "5D",
@@ -316,10 +316,10 @@
       "on_hit": 0,
       "level": 2,
       "counter_type": "Mid",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": 1125,
-      "risk_loss": "3000 [1000]"
+      "risc_gain": 1125,
+      "risc_loss": "3000 [1000]"
     },
     {
       "input": "5[D]",
@@ -332,16 +332,16 @@
       "on_hit": "KD +36",
       "level": 4,
       "counter_type": "Mid",
-      "invuln": null,
+      "invuln": "",
       "proration": "100%",
-      "risk_gain": 1875,
-      "risk_loss": "1500 [1000]"
+      "risc_gain": 1875,
+      "risc_loss": "1500 [1000]"
     }
   ],
   "special_moves": [
     {
       "input": "236P",
-      "name": "Alpha Blade (Horizontal)",
+      "name": "Alpha Blade",
       "damage": 38,
       "guard": "All",
       "startup": 29,
@@ -353,29 +353,29 @@
       "counter_type": "Very Small",
       "invuln": "Pass-through 7-27 Below Crouch 3-50",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 1000
+      "risc_gain": 500,
+      "risc_loss": 1000
     },
     {
       "input": "j.236P",
-      "name": "Air Alpha Blade (Horizontal)",
+      "name": "Air Alpha Blade",
       "damage": 38,
       "guard": "All",
       "startup": 29,
       "active": 3,
       "recovery": 33,
-      "on_block": null,
+      "on_block": "",
       "on_hit": "KD",
       "level": 1,
       "counter_type": "Very Small",
       "invuln": "Pass-through 7-27",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 1000
+      "risc_gain": 500,
+      "risc_loss": 1000
     },
     {
       "input": "236K",
-      "name": "Alpha Blade (Diagonal)",
+      "name": "Alpha Blade",
       "damage": 36,
       "guard": "All",
       "startup": 27,
@@ -387,12 +387,12 @@
       "counter_type": "Very Small",
       "invuln": "Pass-through 10-46",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 2000
+      "risc_gain": 500,
+      "risc_loss": 2000
     },
     {
       "input": "j.236K",
-      "name": "Air Alpha Blade (Diagonal)",
+      "name": "Air Alpha Blade",
       "damage": 36,
       "guard": "All",
       "startup": "28~41",
@@ -404,8 +404,8 @@
       "counter_type": "Very Small",
       "invuln": "Pass-through 9-[20~33]",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 2000
+      "risc_gain": 500,
+      "risc_loss": 2000
     },
     {
       "input": "623S",
@@ -421,8 +421,8 @@
       "counter_type": "Large, Very Small",
       "invuln": "Full 1-10",
       "proration": "60%",
-      "risk_gain": "700\u00d72",
-      "risk_loss": 1000
+      "risc_gain": "700\u00d72",
+      "risc_loss": 1000
     },
     {
       "input": "j.623S",
@@ -432,14 +432,14 @@
       "startup": 9,
       "active": "2, 18",
       "recovery": "Until Landing+8",
-      "on_block": null,
+      "on_block": "",
       "on_hit": "KD",
       "level": 2,
       "counter_type": "Large, Very Small",
       "invuln": "Full 1-10",
       "proration": "60%",
-      "risk_gain": "700\u00d72",
-      "risk_loss": 1000
+      "risc_gain": "700\u00d72",
+      "risc_loss": 1000
     },
     {
       "input": "236H",
@@ -453,10 +453,10 @@
       "on_hit": 12,
       "level": 2,
       "counter_type": "Very Small",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 2000
+      "risc_gain": 500,
+      "risc_loss": 2000
     },
     {
       "input": "236S",
@@ -470,10 +470,10 @@
       "on_hit": -1,
       "level": 3,
       "counter_type": "Very Small",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": 2000,
-      "risk_loss": 1000
+      "risc_gain": 2000,
+      "risc_loss": 1000
     },
     {
       "input": "236S 236S",
@@ -487,10 +487,10 @@
       "on_hit": -3,
       "level": 3,
       "counter_type": "Very Small",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": 1500,
-      "risk_loss": 1000
+      "risc_gain": 1500,
+      "risc_loss": 1000
     },
     {
       "input": "236S 236K",
@@ -506,8 +506,8 @@
       "counter_type": "Very Small",
       "invuln": "Airborne 14-34",
       "proration": "80%",
-      "risk_gain": 1500,
-      "risk_loss": 1000
+      "risc_gain": 1500,
+      "risc_loss": 1000
     },
     {
       "input": "63214S",
@@ -517,14 +517,14 @@
       "startup": 27,
       "active": 11,
       "recovery": 15,
-      "on_block": null,
+      "on_block": "",
       "on_hit": "HKD +26",
-      "level": null,
-      "counter_type": null,
+      "level": "",
+      "counter_type": "",
       "invuln": "Airborne 14-42",
       "proration": "50%",
-      "risk_gain": null,
-      "risk_loss": 2500
+      "risc_gain": "",
+      "risc_loss": 2500
     },
     {
       "input": "j.214P",
@@ -534,48 +534,48 @@
       "startup": 22,
       "active": "Until Hit",
       "recovery": "35+4 After Landing",
-      "on_block": null,
-      "on_hit": null,
+      "on_block": "",
+      "on_hit": "",
       "level": 0,
       "counter_type": "Very Small",
-      "invuln": null,
+      "invuln": "",
       "proration": "80%",
-      "risk_gain": 500,
-      "risk_loss": 1000
+      "risc_gain": 500,
+      "risc_loss": 1000
     },
     {
       "input": "214H",
       "name": "Tightrope",
-      "damage": null,
-      "guard": null,
-      "startup": null,
-      "active": null,
+      "damage": "",
+      "guard": "",
+      "startup": "",
+      "active": "",
       "recovery": 37,
-      "on_block": null,
-      "on_hit": null,
-      "level": null,
-      "counter_type": null,
+      "on_block": "",
+      "on_hit": "",
+      "level": "",
+      "counter_type": "",
       "invuln": "6-36F high profile",
-      "proration": null,
-      "risk_gain": null,
-      "risk_loss": null
+      "proration": "",
+      "risc_gain": "",
+      "risc_loss": ""
     },
     {
       "input": "214[H]",
-      "name": "Tightrope Charge",
-      "damage": null,
-      "guard": null,
-      "startup": null,
-      "active": null,
+      "name": "Tightrope",
+      "damage": "",
+      "guard": "",
+      "startup": "",
+      "active": "",
       "recovery": 28,
-      "on_block": null,
-      "on_hit": null,
-      "level": null,
-      "counter_type": null,
-      "invuln": null,
-      "proration": null,
-      "risk_gain": null,
-      "risk_loss": null
+      "on_block": "",
+      "on_hit": "",
+      "level": "",
+      "counter_type": "",
+      "invuln": "",
+      "proration": "",
+      "risc_gain": "",
+      "risc_loss": ""
     }
   ],
   "overdrive_moves": [],

@@ -6,8 +6,19 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from sqlmodel import SQLModel
 
-
-from scraper.models import MoveData  # Import all models here
+# Import all models here
+from scraper.models import (
+    Character,
+    BaseTable,
+    BaseMoveData,
+    NormalMoves,
+    SpecialMoves,
+    OverdriveMoves,
+    SystemCoreData,
+    SystemJumpData,
+    GatlingTable,
+    CharacterSpecificTable,
+)
 
 config = context.config
 

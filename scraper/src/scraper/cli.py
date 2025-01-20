@@ -8,7 +8,7 @@ import subprocess
 from sqlalchemy import text
 from sqlmodel import Session, create_engine
 from rich import print
-from typing import Optional
+from typing import Optional, List
 
 from scraper.db import init_db, import_json_to_db, get_database_url
 from scraper.spiders.dustloop_spider import DustloopSpider
@@ -35,10 +35,20 @@ def scrape(output: str = "output/dustloop_tables.json"):
 
 @app.command()
 def import_data(
-    json_path: Path = Path("output/dustloop_tables.json"),
-    database_url: str | None = None
-):
-    """Import frame data from JSON into the database."""
+    json_path: Path = typer.Option(
+        Path("output/parsed_frame_data.json"),
+        help="Path to the cleaned frame data JSON file",
+    ),
+    database_url: str | None = typer.Option(
+        None,
+        help="Database URL (uses environment variable if not specified)",
+    ),
+    truncate: bool = typer.Option(
+        True,
+        help="Whether to truncate existing data before importing",
+    ),
+) -> None:
+    """Import cleaned frame data from JSON into the database."""
     try:
         if not json_path.exists():
             typer.echo(f"Error: File {json_path} does not exist", err=True)
@@ -63,29 +73,29 @@ def import_data(
             
             engine = create_engine(database_url)
             
-            # Truncate all tables before importing
-            with Session(engine) as session:
-                try:
-                    # Disable foreign key checks temporarily if using PostgreSQL
-                    session.execute(text("SET CONSTRAINTS ALL DEFERRED"))
-                    
-                    # Truncate all tables
-                    session.execute(text("TRUNCATE TABLE characters CASCADE"))
-                    session.execute(text("TRUNCATE TABLE move_data CASCADE"))
-                    session.execute(text("TRUNCATE TABLE system_core_data CASCADE"))
-                    session.execute(text("TRUNCATE TABLE system_jump_data CASCADE"))
-                    session.execute(text("TRUNCATE TABLE gatling_tables CASCADE"))
-                    session.execute(text("TRUNCATE TABLE normal_moves CASCADE"))
-                    session.execute(text("TRUNCATE TABLE special_moves CASCADE"))
-                    session.execute(text("TRUNCATE TABLE overdrive_moves CASCADE"))
-                    session.execute(text("TRUNCATE TABLE character_specific_tables CASCADE"))
-                    
-                    session.commit()
-                    progress.update(task, description="Tables truncated")
-                except Exception as e:
-                    session.rollback()
-                    console.print(f"[red]Error:[/] Failed to truncate tables: {str(e)}")
-                    raise typer.Exit(1)
+            # Truncate all tables if requested
+            if truncate:
+                with Session(engine) as session:
+                    try:
+                        # Disable foreign key checks temporarily if using PostgreSQL
+                        session.execute(text("SET CONSTRAINTS ALL DEFERRED"))
+                        
+                        # Truncate all tables in the correct order
+                        session.execute(text("TRUNCATE TABLE normal_moves CASCADE"))
+                        session.execute(text("TRUNCATE TABLE special_moves CASCADE"))
+                        session.execute(text("TRUNCATE TABLE overdrive_moves CASCADE"))
+                        session.execute(text("TRUNCATE TABLE system_core_data CASCADE"))
+                        session.execute(text("TRUNCATE TABLE system_jump_data CASCADE"))
+                        session.execute(text("TRUNCATE TABLE gatling_tables CASCADE"))
+                        session.execute(text("TRUNCATE TABLE character_specific_tables CASCADE"))
+                        session.execute(text("TRUNCATE TABLE characters CASCADE"))
+                        
+                        session.commit()
+                        progress.update(task, description="Tables truncated")
+                    except Exception as e:
+                        session.rollback()
+                        console.print(f"[red]Error:[/] Failed to truncate tables: {str(e)}")
+                        raise typer.Exit(1)
             
             # Now import the new data
             import_json_to_db(json_path, database_url)
@@ -150,12 +160,17 @@ def parse_downloaded_data(
         help="OpenAI API key for data cleaning (optional)",
         envvar="OPENAI_API_KEY",
     ),
+    reparse: Optional[List[str]] = typer.Option(
+        None,
+        help="List of character names to reparse from their raw data files",
+    ),
 ) -> None:
     """Parse downloaded frame data HTML files into structured JSON."""
     parse_frame_data(
         input_dir=Path(input_dir),
         output_file=Path(output_file),
         openai_api_key=openai_api_key,
+        reparse_characters=reparse,
     )
 
 if __name__ == "__main__":

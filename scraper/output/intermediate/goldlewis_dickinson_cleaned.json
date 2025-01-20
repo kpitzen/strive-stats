@@ -124,7 +124,7 @@
       "on_hit": "-16",
       "level": 2,
       "counter_type": "Mid",
-      "invuln": "1-2 Upper Body, 3-17 Above Knees",
+      "invuln": "1-2 Upper Body3-17 Above Knees",
       "proration": "90%",
       "risc_gain": 1500,
       "risc_loss": 1000
@@ -447,7 +447,7 @@
       "input": "69874H",
       "name": "Behemoth Typhoon (684)",
       "damage": 80,
-      "guard": "All (Guard Crush)",
+      "guard": "All* (Guard Crush)",
       "startup": 12,
       "active": 20,
       "recovery": 21,
@@ -593,13 +593,13 @@
       "counter_type": "Very Small",
       "invuln": "",
       "proration": "80%",
-      "risc_gain": "100x2",
+      "risc_gain": "100\u00d72",
       "risc_loss": 1000
     },
     {
       "input": "214S Level 2",
       "name": "Thunderbird (Level 2)",
-      "damage": "10x2, 30",
+      "damage": "10\u00d72, 30",
       "guard": "All",
       "startup": 57,
       "active": 84,
@@ -610,13 +610,13 @@
       "counter_type": "Very Small",
       "invuln": "",
       "proration": "80%",
-      "risc_gain": "100x3",
+      "risc_gain": "100\u00d73",
       "risc_loss": 1000
     },
     {
       "input": "214S Level 3",
       "name": "Thunderbird (Level 3)",
-      "damage": "10x3, 30",
+      "damage": "10\u00d73, 30",
       "guard": "All",
       "startup": 57,
       "active": 144,
@@ -627,13 +627,13 @@
       "counter_type": "Very Small",
       "invuln": "",
       "proration": "80%",
-      "risc_gain": "100x4",
+      "risc_gain": "100\u00d74",
       "risc_loss": 1000
     },
     {
       "input": "236S",
       "name": "Skyfish",
-      "damage": "5x3~51 Total",
+      "damage": "5\u00d73~51 Total",
       "guard": "All",
       "startup": 25,
       "active": "",
@@ -644,7 +644,7 @@
       "counter_type": "Very Small",
       "invuln": "",
       "proration": "80%",
-      "risc_gain": "100x3~51",
+      "risc_gain": "100\u00d73~51",
       "risc_loss": 1000
     }
   ],
