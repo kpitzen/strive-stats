@@ -1,0 +1,9 @@
+# Database Configuration
+export DB_USER=postgres
+export DB_PASSWORD=postgres
+export DB_HOST=localhost
+export DB_PORT=5432
+export DB_NAME=frame_data
+
+# Construct the database URL
+export DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}" 
