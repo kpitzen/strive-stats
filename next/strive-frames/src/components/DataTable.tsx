@@ -233,7 +233,7 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
             {table.getRowModel().rows.map((row) => (
               <tr
                 key={row.id}
-                className="hover:bg-gray-100 border-b border-gray-200 last:border-0"
+                className="even:bg-gray-100 hover:bg-gray-200 border-b border-gray-200 last:border-0"
               >
                 {row.getVisibleCells().map((cell) => (
                   <td key={cell.id} className="px-4 py-3 text-gray-900">
