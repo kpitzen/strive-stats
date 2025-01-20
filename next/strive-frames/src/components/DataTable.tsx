@@ -201,9 +201,9 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
           </div>
         )}
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto max-h-[70vh] relative">
         <table className="w-full border-collapse text-sm">
-          <thead>
+          <thead className="sticky top-0 z-10">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
