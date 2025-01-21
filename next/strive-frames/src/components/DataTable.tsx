@@ -13,6 +13,12 @@ import {
 import { useState, useMemo } from "react";
 import { ArrayCell } from "./ArrayCell";
 import { DropdownFilter } from "./DropdownFilter";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -38,6 +44,17 @@ const levelFilterFn = (
   const value = row.getValue(columnId);
   if (!value || !filterValue) return true;
   return value.toString().includes(filterValue.toString());
+};
+
+// Add this new filter function
+const multiSelectFilterFn = (
+  row: { getValue: (columnId: string) => unknown },
+  columnId: string,
+  filterValue: string[]
+): boolean => {
+  const value = row.getValue(columnId);
+  if (!value || !filterValue || filterValue.length === 0) return true;
+  return filterValue.includes(value.toString());
 };
 
 // Helper function to get placeholder text for a column
@@ -114,6 +131,7 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
   const processedColumns = useMemo(() => 
     columns.map((col) => {
       const key = (col as { accessorKey?: string }).accessorKey;
+      const isMultiSelect = key === "character" || key === "input";
       return {
         ...col,
         cell: key && (key.includes("Moves") || key === "cancelOptions")
@@ -124,9 +142,11 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
         enableColumnFilter: true,
         filterFn: key === "level" 
           ? levelFilterFn 
-          : DROPDOWN_FILTER_COLUMNS.includes(key || "") 
-            ? "equals" as const
-            : "includesString" as const,
+          : isMultiSelect
+            ? multiSelectFilterFn
+            : DROPDOWN_FILTER_COLUMNS.includes(key || "") 
+              ? "equals" as const
+              : "includesString" as const,
       } as ColumnDef<TData, TValue>;
     }),
     [columns]
@@ -183,27 +203,36 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
           ))}
         </div>
 
-        {/* Text filters in a grid */}
+        {/* Text filters in an accordion */}
         {textFilterColumns.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-            {textFilterColumns.map((column) => (
-              <div key={column.id}>
-                <label
-                  htmlFor={column.id}
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  {column.id.charAt(0).toUpperCase() + column.id.slice(1)}
-                </label>
-                <input
-                  id={column.id}
-                  placeholder={getPlaceholderText(column.id)}
-                  value={(column.getFilterValue() as string) ?? ""}
-                  onChange={(e) => column.setFilterValue(e.target.value)}
-                  className="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-            ))}
-          </div>
+          <Accordion type="single" collapsible>
+            <AccordionItem value="text-filters">
+              <AccordionTrigger className="text-sm font-medium text-gray-700">
+                Additional Filters
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+                  {textFilterColumns.map((column) => (
+                    <div key={column.id}>
+                      <label
+                        htmlFor={column.id}
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
+                        {column.id.charAt(0).toUpperCase() + column.id.slice(1)}
+                      </label>
+                      <input
+                        id={column.id}
+                        placeholder={getPlaceholderText(column.id)}
+                        value={(column.getFilterValue() as string) ?? ""}
+                        onChange={(e) => column.setFilterValue(e.target.value)}
+                        className="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         )}
       </div>
       <div className="overflow-x-auto max-h-[70vh] relative">
