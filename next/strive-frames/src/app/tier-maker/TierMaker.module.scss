@@ -283,4 +283,27 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--theme-background-modal);
+  color: var(--theme-text);
+  padding: 1rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  z-index: 1000;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 } 

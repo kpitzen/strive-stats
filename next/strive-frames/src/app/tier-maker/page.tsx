@@ -1,11 +1,13 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import styles from './TierMaker.module.scss';
 import { DraggableTierRow } from './components/DraggableTierRow';
 import { CharacterPool } from './components/CharacterPool';
+import { deserializeState, generateShareableUrl } from './utils/stateManagement';
+import { useSearchParams } from 'next/navigation';
 
 interface Tier {
   id: string;
@@ -31,9 +33,33 @@ const characters = [
 ];
 
 export default function TierMaker() {
+  const searchParams = useSearchParams();
   const [tiers, setTiers] = useState<Tier[]>(defaultTiers);
   const [unassignedCharacters, setUnassignedCharacters] = useState(characters);
   const [isPrettified, setIsPrettified] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  // Load state from URL if present
+  useEffect(() => {
+    const stateParam = searchParams.get('state');
+    if (stateParam) {
+      const loadedTiers = deserializeState(stateParam);
+      if (loadedTiers.length > 0) {
+        setTiers(loadedTiers);
+        // Update unassigned characters
+        const assignedChars = new Set(loadedTiers.flatMap(tier => tier.characters));
+        setUnassignedCharacters(characters.filter(char => !assignedChars.has(char)));
+      }
+    }
+  }, [searchParams]);
+
+  const handleShare = () => {
+    const url = generateShareableUrl(tiers);
+    navigator.clipboard.writeText(url).then(() => {
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 2000);
+    }).catch(console.error);
+  };
 
   const handleCharacterDrop = (tierId: string) => (item: { name: string; sourceTierId?: string }, insertIndex?: number) => {
     const { name, sourceTierId } = item;
@@ -143,6 +169,12 @@ export default function TierMaker() {
           >
             {isPrettified ? "Show Controls" : "Hide Controls"}
           </button>
+          <button
+            className={styles.addTierButton}
+            onClick={handleShare}
+          >
+            Share Tier List
+          </button>
         </div>
         <div className={styles.tierList}>
           {tiers.map((tier, index) => (
@@ -167,6 +199,9 @@ export default function TierMaker() {
           characters={unassignedCharacters}
           onDrop={handleUnassignedDrop}
         />
+        <div className={`${styles.toast} ${showToast ? styles.visible : ''}`}>
+          Share URL copied to clipboard!
+        </div>
       </div>
     </DndProvider>
   );
