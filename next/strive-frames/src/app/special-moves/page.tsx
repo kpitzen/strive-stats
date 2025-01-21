@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { fetchSpecialMoves } from "@/app/actions";
 import { SpecialMovesTable } from "@/components/SpecialMovesTable";
 import { ErrorBoundaryClient } from "@/components/ErrorBoundaryClient";
+export { viewport } from "../viewport";
 
 async function SpecialMovesTableContainer() {
   const data = await fetchSpecialMoves();

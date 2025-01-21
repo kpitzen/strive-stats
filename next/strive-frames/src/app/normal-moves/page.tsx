@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { fetchNormalMoves } from "@/app/actions";
 import { NormalMovesTable } from "@/components/NormalMovesTable";
 import { ErrorBoundaryClient } from "@/components/ErrorBoundaryClient";
+export { viewport } from "../viewport";
 
 async function NormalMovesTableContainer() {
   const data = await fetchNormalMoves();

@@ -1,10 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
 import { Navigation } from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.fgc-stats.com'),
@@ -48,11 +54,6 @@ export const metadata: Metadata = {
     description: 'Comprehensive Guilty Gear Strive frame data, move properties, and community tools.',
     images: ['/og-default.jpg'],
     creator: '@striveframes' // Replace with actual Twitter handle if you have one
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
   },
   alternates: {
     canonical: 'https://www.fgc-stats.com',

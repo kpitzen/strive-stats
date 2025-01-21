@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { fetchOverdriveMoves } from "@/app/actions";
 import { OverdriveMovesTable } from "@/components/OverdriveMovesTable";
 import { ErrorBoundaryClient } from "@/components/ErrorBoundaryClient";
+export { viewport } from "../viewport";
 
 async function OverdriveMovesTableContainer() {
   const data = await fetchOverdriveMoves();
