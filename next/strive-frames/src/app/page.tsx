@@ -37,6 +37,14 @@ export default function HomePage() {
             <h2 className="text-2xl font-semibold mb-2 text-text-primary">Overdrive Moves</h2>
             <p className="text-text-secondary">View overdrive move properties</p>
           </Link>
+
+          <Link
+            href="/tier-maker"
+            className="p-6 bg-bg-secondary shadow hover:shadow-md transition-all hover:bg-[var(--success-bg)] hover:text-[var(--success-text)]"
+          >
+            <h2 className="text-2xl font-semibold mb-2 text-text-primary">Tier Maker</h2>
+            <p className="text-text-secondary">Create and share character tier lists</p>
+          </Link>
         </div>
       </div>
     </div>

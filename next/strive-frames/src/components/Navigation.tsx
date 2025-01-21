@@ -10,6 +10,7 @@ const navItems = [
   { href: "/normal-moves", label: "Normal Moves" },
   { href: "/special-moves", label: "Special Moves" },
   { href: "/overdrive-moves", label: "Overdrive Moves" },
+  { href: "/tier-maker", label: "Tier Maker" },
 ];
 
 export function Navigation() {

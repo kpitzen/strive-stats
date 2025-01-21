@@ -1,0 +1,286 @@
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: left;
+    margin-bottom: 2rem;
+    color: var(--theme-text);
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 500;
+    background: var(--theme-background-modal);
+    padding: 1rem;
+    border-radius: 2px;
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.prettifyButton,
+.addTierButton {
+  padding: 0.5rem 1rem;
+  background: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  transition: opacity 0.2s;
+  min-width: 100px;
+  font-size: 0.9rem;
+  border-radius: 2px;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.prettifyButton {
+  &.active {
+    background: #444;
+  }
+}
+
+.tierList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.draggableTierRow {
+  display: flex;
+  cursor: move;
+  opacity: 1;
+  transition: opacity 0.2s;
+  padding-left: 24px;
+  position: relative;
+
+  &.dragging {
+    opacity: 0.5;
+  }
+}
+
+.tierRow {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--theme-background-modal);
+  min-height: 100px;
+}
+
+.dragHandle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  color: var(--theme-text);
+  opacity: 0.5;
+  cursor: move;
+  font-size: 1.25rem;
+  user-select: none;
+  transition: opacity 0.2s;
+  background: var(--theme-background-modal);
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.tierHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 60px;
+  width: auto;
+}
+
+.labelContainer {
+  display: flex;
+  align-items: center;
+}
+
+.tierLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  width: auto;
+  height: 60px;
+  padding: 0 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--theme-text);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  position: relative;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
+.labelInput {
+  width: 100%;
+  min-width: 60px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  color: var(--theme-text);
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: var(--font-mono);
+  padding: 0 0.5rem;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.colorButton {
+  flex: 1;
+  height: 24px;
+  padding: 0;
+  background: var(--theme-button-background);
+  color: var(--theme-text);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.colorInput {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.tierControls {
+  display: flex;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.removeTierButton {
+  flex: 1;
+  height: 24px;
+  padding: 0;
+  background: var(--theme-button-background);
+  color: var(--theme-text);
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.tierCharacters {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  min-height: 80px;
+  border: 2px dashed var(--theme-border-subdued);
+  align-items: center;
+  position: relative;
+}
+
+.dropIndicator {
+  position: absolute;
+  height: 60px;
+  width: 4px;
+  background-color: var(--theme-focused-foreground);
+  transition: transform 0.15s ease;
+  pointer-events: none;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.character {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+  cursor: move;
+  user-select: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: var(--theme-button-background);
+  border-radius: 0.5rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.characterPool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--theme-background-modal);
+  align-items: center;
+}
+
+.characterIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--theme-background);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.characterName {
+  font-size: 0.75rem;
+  text-align: center;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+} 
