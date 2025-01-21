@@ -13,12 +13,14 @@ import {
 import { useState, useMemo } from "react";
 import { ArrayCell } from "./ArrayCell";
 import { DropdownFilter } from "./DropdownFilter";
+import { FrameTooltip } from "./FrameTooltip";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -103,6 +105,11 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
           ? ({ getValue }: { getValue: () => unknown }) => (
               <ArrayCell value={getValue() as string[] | null} />
             )
+          : key && (key === "onBlock" || key === "onHit")
+          ? ({ getValue }: { getValue: () => unknown }) => {
+              const value = getValue();
+              return typeof value === "string" ? <FrameTooltip value={value} /> : value;
+            }
           : col.cell,
         enableColumnFilter: true,
         filterFn: key === "level" 
@@ -208,103 +215,105 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
   );
 
   return (
-    <div className="border border-gray-200">
-      <div className="p-4 bg-gray-100">
-        {/* Dropdown filters in a row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-4">
-          {dropdownColumns.map((column) => (
-            <div key={column.id}>
-              <label
-                htmlFor={column.id}
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                {column.id === "counterType" ? "Counter" : column.id.charAt(0).toUpperCase() + column.id.slice(1)}
-              </label>
-              <DropdownFilter
-                column={column}
-                options={uniqueValues[column.id] || []}
-                placeholder={getPlaceholderText(column.id)}
-              />
-            </div>
-          ))}
-        </div>
+    <TooltipProvider>
+      <div className="border border-gray-200">
+        <div className="p-4 bg-gray-100">
+          {/* Dropdown filters in a row */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-4">
+            {dropdownColumns.map((column) => (
+              <div key={column.id}>
+                <label
+                  htmlFor={column.id}
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  {column.id === "counterType" ? "Counter" : column.id.charAt(0).toUpperCase() + column.id.slice(1)}
+                </label>
+                <DropdownFilter
+                  column={column}
+                  options={uniqueValues[column.id] || []}
+                  placeholder={getPlaceholderText(column.id)}
+                />
+              </div>
+            ))}
+          </div>
 
-        {/* Text filters in an accordion */}
-        {textFilterColumns.length > 0 && (
-          <Accordion type="single" collapsible>
-            <AccordionItem value="text-filters" className="border-none">
-              <AccordionTrigger className="text-sm font-medium text-gray-700 py-2 px-4 hover:no-underline hover:bg-gray-200 w-fit rounded">
-                Additional Filters
-              </AccordionTrigger>
-              <AccordionContent className="pt-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                  {textFilterColumns.map((column) => (
-                    <div key={column.id}>
-                      <label
-                        htmlFor={column.id}
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        {column.id.charAt(0).toUpperCase() + column.id.slice(1)}
-                      </label>
-                      <input
-                        id={column.id}
-                        placeholder={getPlaceholderText(column.id)}
-                        value={(column.getFilterValue() as string) ?? ""}
-                        onChange={(e) => column.setFilterValue(e.target.value)}
-                        className="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      />
-                    </div>
+          {/* Text filters in an accordion */}
+          {textFilterColumns.length > 0 && (
+            <Accordion type="single" collapsible>
+              <AccordionItem value="text-filters" className="border-none">
+                <AccordionTrigger className="text-sm font-medium text-gray-700 py-2 px-4 hover:no-underline hover:bg-gray-200 w-fit rounded">
+                  Additional Filters
+                </AccordionTrigger>
+                <AccordionContent className="pt-4">
+                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+                    {textFilterColumns.map((column) => (
+                      <div key={column.id}>
+                        <label
+                          htmlFor={column.id}
+                          className="block text-sm font-medium text-gray-700 mb-1"
+                        >
+                          {column.id.charAt(0).toUpperCase() + column.id.slice(1)}
+                        </label>
+                        <input
+                          id={column.id}
+                          placeholder={getPlaceholderText(column.id)}
+                          value={(column.getFilterValue() as string) ?? ""}
+                          onChange={(e) => column.setFilterValue(e.target.value)}
+                          className="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          )}
+        </div>
+        <div className="overflow-x-auto max-h-[70vh] relative">
+          <table className="w-full border-collapse text-sm">
+            <thead className="sticky top-0 z-10">
+              {table.getHeaderGroups().map((headerGroup) => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <th
+                      key={header.id}
+                      onClick={header.column.getToggleSortingHandler()}
+                      className="bg-gray-200 px-4 py-3 text-left font-medium text-gray-900 cursor-pointer hover:bg-gray-300 border-b border-gray-300"
+                    >
+                      <div className="flex items-center gap-2">
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                        <span className="text-gray-700">
+                          {{
+                            asc: "↑",
+                            desc: "↓",
+                          }[header.column.getIsSorted() as string] ?? null}
+                        </span>
+                      </div>
+                    </th>
                   ))}
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        )}
+                </tr>
+              ))}
+            </thead>
+            <tbody className="bg-white">
+              {table.getRowModel().rows.map((row) => (
+                <tr
+                  key={row.id}
+                  className="even:bg-gray-100 hover:bg-gray-200 border-b border-gray-200 last:border-0"
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <td key={cell.id} className="px-4 py-3 text-gray-900">
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div className="overflow-x-auto max-h-[70vh] relative">
-        <table className="w-full border-collapse text-sm">
-          <thead className="sticky top-0 z-10">
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    onClick={header.column.getToggleSortingHandler()}
-                    className="bg-gray-200 px-4 py-3 text-left font-medium text-gray-900 cursor-pointer hover:bg-gray-300 border-b border-gray-300"
-                  >
-                    <div className="flex items-center gap-2">
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                      <span className="text-gray-700">
-                        {{
-                          asc: "↑",
-                          desc: "↓",
-                        }[header.column.getIsSorted() as string] ?? null}
-                      </span>
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody className="bg-white">
-            {table.getRowModel().rows.map((row) => (
-              <tr
-                key={row.id}
-                className="even:bg-gray-100 hover:bg-gray-200 border-b border-gray-200 last:border-0"
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="px-4 py-3 text-gray-900">
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    </TooltipProvider>
   );
 } 
