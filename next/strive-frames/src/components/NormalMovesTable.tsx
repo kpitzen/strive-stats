@@ -36,6 +36,16 @@ const columns: ColumnDef<NormalMoves>[] = [
     accessorKey: "character",
     header: <TableHeader>Character</TableHeader>,
     size: 150,
+    priority: 1,
+    cell: ({ row, table: { getState } }) => {
+      const hasHiddenColumns = getState().columnVisibility && 
+        Object.values(getState().columnVisibility).some(v => !v);
+      return (
+        <div className={hasHiddenColumns ? "" : "pl-3"}>
+          {row.getValue("character")}
+        </div>
+      );
+    },
   }),
   createColumn<NormalMoves>({
     accessorKey: "input",
@@ -55,6 +65,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       );
     },
     size: 100,
+    priority: 1,
   }),
   createHiddenColumn<NormalMoves>("notes"),
   createColumn<NormalMoves>({
@@ -65,6 +76,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 1,
   }),
   createColumn<NormalMoves>({
     accessorKey: "guard",
@@ -74,6 +86,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 2,
   }),
   createColumn<NormalMoves>({
     accessorKey: "startup",
@@ -83,6 +96,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 1,
   }),
   createColumn<NormalMoves>({
     accessorKey: "active",
@@ -92,6 +106,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 2,
   }),
   createColumn<NormalMoves>({
     accessorKey: "recovery",
@@ -101,6 +116,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 2,
   }),
   createColumn<NormalMoves>({
     accessorKey: "onBlock",
@@ -110,6 +126,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 1,
   }),
   createColumn<NormalMoves>({
     accessorKey: "onHit",
@@ -119,6 +136,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 1,
   }),
   createColumn<NormalMoves>({
     accessorKey: "level",
@@ -128,6 +146,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<NormalMoves>({
     accessorKey: "counterType",
@@ -137,6 +156,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<NormalMoves>({
     accessorKey: "invuln",
@@ -146,6 +166,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<NormalMoves>({
     accessorKey: "proration",
@@ -155,6 +176,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<NormalMoves>({
     accessorKey: "riscGain",
@@ -164,6 +186,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<NormalMoves>({
     accessorKey: "riscLoss",
@@ -173,6 +196,7 @@ const columns: ColumnDef<NormalMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
 ];
 

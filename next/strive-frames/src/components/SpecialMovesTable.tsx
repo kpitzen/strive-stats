@@ -37,6 +37,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
     accessorKey: "character",
     header: <TableHeader>Character</TableHeader>,
     size: 150,
+    priority: 1,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "name",
@@ -56,6 +57,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       );
     },
     size: 200,
+    priority: 1,
   }),
   createHiddenColumn<SpecialMoves>("notes"),
   createColumn<SpecialMoves>({
@@ -66,6 +68,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 150,
+    priority: 1,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "damage",
@@ -75,6 +78,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 1,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "guard",
@@ -84,6 +88,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 2,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "startup",
@@ -93,6 +98,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 1,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "active",
@@ -102,6 +108,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 2,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "recovery",
@@ -111,6 +118,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 2,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "onBlock",
@@ -120,6 +128,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 1,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "onHit",
@@ -129,6 +138,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 1,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "level",
@@ -138,6 +148,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "counterType",
@@ -147,6 +158,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "invuln",
@@ -156,6 +168,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "proration",
@@ -165,6 +178,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "riscGain",
@@ -174,6 +188,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<SpecialMoves>({
     accessorKey: "riscLoss",
@@ -183,6 +198,7 @@ const columns: ColumnDef<SpecialMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
 ];
 

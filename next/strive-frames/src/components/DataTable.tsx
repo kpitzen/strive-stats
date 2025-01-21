@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   useReactTable,
   getCoreRowModel,
@@ -11,7 +11,6 @@ import {
   ColumnFiltersState,
   ColumnDef,
 } from '@tanstack/react-table';
-import { useState, useMemo } from "react";
 import { ArrayCell } from "./ArrayCell";
 import { Table } from './srcl/Table';
 import { TableRow } from './srcl/TableRow';
@@ -25,6 +24,9 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ExpandableRow } from "./ExpandableRow";
+import { levelFilterFn, multiSelectFilterFn } from "./filters";
+import { PlusIcon, MinusIcon } from "@radix-ui/react-icons";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -34,6 +36,18 @@ import styles from './srcl/Table.module.scss';
 
 const DROPDOWN_FILTER_COLUMNS = ["character", "input", "startup", "guard", "level", "counterType"];
 
+const BREAKPOINTS = {
+  lg: 1280,  // Full size - show all columns
+  md: 1024,  // Medium - hide priority 3 columns
+  sm: 768,   // Small - hide priority 2 and 3 columns
+};
+
+type ExtendedColumnDef<TData, TValue> = ColumnDef<TData, TValue> & {
+  accessorKey?: string;
+  priority?: 1 | 2 | 3;
+  size?: number;
+};
+
 // Helper function to extract numeric value from startup string
 function getStartupValue(startup: string): number {
   if (!startup) return Infinity;
@@ -41,35 +55,6 @@ function getStartupValue(startup: string): number {
   const match = startup.match(/\d+/);
   return match ? parseInt(match[0], 10) : Infinity;
 }
-
-// Custom filter function for level field
-const levelFilterFn = (
-  row: { getValue: (columnId: string) => unknown },
-  columnId: string,
-  filterValue: string
-): boolean => {
-  const value = row.getValue(columnId);
-  if (!value || !filterValue) return true;
-  return value.toString().includes(filterValue.toString());
-};
-
-// Add this new filter function
-const multiSelectFilterFn = (
-  row: { getValue: (columnId: string) => unknown },
-  columnId: string,
-  filterValue: string[]
-): boolean => {
-  const value = row.getValue(columnId);
-  if (!value || !filterValue || filterValue.length === 0) return true;
-  
-  // For input column, check if any selected value is a prefix of the cell value
-  if (columnId === "input") {
-    return filterValue.some(filter => value.toString().startsWith(filter));
-  }
-  
-  // For other columns (like character), use exact match
-  return filterValue.includes(value.toString());
-};
 
 // Helper function to get placeholder text for a column
 function getPlaceholderText(columnId: string): string {
@@ -99,10 +84,48 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
     { id: "character", desc: false }
   ]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [expandedRows, setExpandedRows] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    // Set initial width
+    setWindowWidth(window.innerWidth);
+
+    // Add resize listener
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    
+    // Cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const columnVisibility = useMemo(() => {
+    const visibility: Record<string, boolean> = {};
+    columns.forEach((col) => {
+      const extendedCol = col as ExtendedColumnDef<TData, TValue>;
+      const key = extendedCol.accessorKey;
+      const priority = extendedCol.priority || 1;
+
+      if (key) {
+        if (windowWidth < BREAKPOINTS.sm) {
+          // On small screens, only show priority 1 columns
+          visibility[key] = priority === 1;
+        } else if (windowWidth < BREAKPOINTS.md) {
+          // On medium screens, show priority 1 and 2 columns
+          visibility[key] = priority <= 2;
+        } else {
+          // On large screens, show all columns
+          visibility[key] = true;
+        }
+      }
+    });
+    return visibility;
+  }, [columns, windowWidth]);
 
   const processedColumns = useMemo(() => 
     columns.map((col) => {
-      const key = (col as { accessorKey?: string }).accessorKey;
+      const extendedCol = col as ExtendedColumnDef<TData, TValue>;
+      const key = extendedCol.accessorKey;
       const isMultiSelect = key === "character" || key === "input";
       return {
         ...col,
@@ -140,9 +163,7 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
     state: {
       sorting,
       columnFilters,
-      columnVisibility: {
-        notes: false
-      }
+      columnVisibility,
     },
   });
 
@@ -221,6 +242,19 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
     (column) => !DROPDOWN_FILTER_COLUMNS.includes(column.id)
   );
 
+  const hiddenColumns = useMemo(() => {
+    return Object.entries(columnVisibility)
+      .filter(([, isVisible]) => !isVisible)
+      .map(([key]) => key);
+  }, [columnVisibility]);
+
+  const toggleRow = (rowId: string) => {
+    setExpandedRows(prev => ({
+      ...prev,
+      [rowId]: !prev[rowId]
+    }));
+  };
+
   return (
     <TooltipProvider>
       <div className="p-4" style={{ background: 'var(--theme-background-modal)' }}>
@@ -288,41 +322,97 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
 
       <div className={styles.root}>
         <Table>
-          <thead>
+          <thead className="sticky top-0 backdrop-blur-sm" 
+            style={{ 
+              background: 'var(--theme-background-modal)',
+              backgroundColor: 'rgba(var(--theme-background-modal-rgb), 0.95)'
+            }}>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <TableColumn
-                    key={header.id}
-                    onClick={header.column.getToggleSortingHandler()}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <div className="flex items-center gap-2">
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                      <span style={{ color: 'var(--theme-text)' }}>
-                        {{
-                          asc: "↑",
-                          desc: "↓",
-                        }[header.column.getIsSorted() as string] ?? null}
-                      </span>
-                    </div>
+                {hiddenColumns.length > 0 && (
+                  <TableColumn className="w-10 px-3" 
+                    style={{ 
+                      background: 'transparent'
+                    }}>
+                    <span className="sr-only">Toggle details</span>
                   </TableColumn>
-                ))}
+                )}
+                {headerGroup.headers.map((header) => {
+                  const extendedCol = header.column.columnDef as ExtendedColumnDef<TData, TValue>;
+                  return (
+                    <TableColumn
+                      key={header.id}
+                      onClick={header.column.getToggleSortingHandler()}
+                      className="px-4 py-2 min-h-[40px]"
+                      style={{ 
+                        cursor: 'pointer', 
+                        width: extendedCol.size,
+                        background: 'transparent',
+                        color: 'var(--theme-text)',
+                      }}
+                    >
+                      <div className="flex items-center gap-2 hover:opacity-80">
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                        <span>
+                          {{
+                            asc: "↑",
+                            desc: "↓",
+                          }[header.column.getIsSorted() as string] ?? null}
+                        </span>
+                      </div>
+                    </TableColumn>
+                  );
+                })}
               </TableRow>
             ))}
           </thead>
           <tbody>
             {table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <TableColumn key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableColumn>
-                ))}
-              </TableRow>
+              <React.Fragment key={row.id}>
+                <TableRow 
+                  className="border-t border-gray-200 transition-colors duration-100"
+                >
+                  {hiddenColumns.length > 0 && (
+                    <TableColumn className="w-10 px-3 align-middle">
+                      <button
+                        onClick={() => toggleRow(row.id)}
+                        className="flex items-center justify-center w-full min-h-[40px] mx-2"
+                        aria-label={expandedRows[row.id] ? "Collapse row" : "Expand row"}
+                      >
+                        {expandedRows[row.id] ? (
+                          <MinusIcon className="h-4 w-4 text-gray-500" />
+                        ) : (
+                          <PlusIcon className="h-4 w-4 text-gray-500" />
+                        )}
+                      </button>
+                    </TableColumn>
+                  )}
+                  {row.getVisibleCells().map((cell, index) => (
+                    <TableColumn 
+                      key={cell.id} 
+                      className={`min-h-[40px] py-2 align-middle px-4 ${index === 0 && hiddenColumns.length === 0 ? 'pl-3' : ''}`}
+                    >
+                      <div className="flex items-center">
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </div>
+                    </TableColumn>
+                  ))}
+                </TableRow>
+                {hiddenColumns.length > 0 && (
+                  <TableRow key={`${row.id}-expanded`} data-expanded="true">
+                    <TableColumn colSpan={row.getVisibleCells().length + 1}>
+                      <ExpandableRow 
+                        row={row} 
+                        hiddenColumns={hiddenColumns}
+                        isExpanded={expandedRows[row.id] || false}
+                      />
+                    </TableColumn>
+                  </TableRow>
+                )}
+              </React.Fragment>
             ))}
           </tbody>
         </Table>

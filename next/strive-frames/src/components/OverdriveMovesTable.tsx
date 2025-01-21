@@ -37,6 +37,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
     accessorKey: "character",
     header: <TableHeader>Character</TableHeader>,
     size: 150,
+    priority: 1,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "name",
@@ -56,6 +57,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       );
     },
     size: 200,
+    priority: 1,
   }),
   createHiddenColumn<OverdriveMoves>("notes"),
   createColumn<OverdriveMoves>({
@@ -66,6 +68,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 150,
+    priority: 1,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "damage",
@@ -75,6 +78,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 1,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "guard",
@@ -84,6 +88,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 2,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "startup",
@@ -93,6 +98,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 1,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "active",
@@ -102,6 +108,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 2,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "recovery",
@@ -111,6 +118,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 2,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "onBlock",
@@ -120,6 +128,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 1,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "onHit",
@@ -129,6 +138,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 1,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "level",
@@ -138,6 +148,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "counterType",
@@ -147,6 +158,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "invuln",
@@ -156,6 +168,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "proration",
@@ -165,6 +178,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "riscGain",
@@ -174,6 +188,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
   createColumn<OverdriveMoves>({
     accessorKey: "riscLoss",
@@ -183,6 +198,7 @@ const columns: ColumnDef<OverdriveMoves>[] = [
       </TableHeader>
     ),
     size: 100,
+    priority: 3,
   }),
 ];
 
