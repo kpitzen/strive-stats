@@ -1,7 +1,7 @@
 .root {
   width: 100%;
-  background: var(--theme-background-modal);
-  border-bottom: 1px solid var(--theme-border);
+  background: #222;
+  border-bottom: 1px solid #333;
   padding: 1rem;
 }
 
@@ -14,17 +14,17 @@
 }
 
 .content a {
-  color: var(--theme-text);
+  color: white;
   text-decoration: none;
   padding: 0.5rem 1rem;
   transition: background-color 0.2s;
   
   &:hover {
-    background: var(--theme-focused-foreground-subdued);
+    background: #333;
   }
   
   &.active {
-    background: var(--success-bg);
-    color: var(--success-text);
+    background: #444;
+    color: white;
   }
 } 

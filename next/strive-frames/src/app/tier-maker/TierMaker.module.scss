@@ -26,8 +26,8 @@
 .prettifyButton,
 .addTierButton {
   padding: 0.5rem 1rem;
-  background: #333;
-  color: white;
+  background: var(--theme-background-modal);
+  color: var(--theme-text);
   border: none;
   cursor: pointer;
   font-family: var(--font-mono);
@@ -43,7 +43,7 @@
 
 .prettifyButton {
   &.active {
-    background: #444;
+    background: var(--theme-focused-foreground);
   }
 }
 
