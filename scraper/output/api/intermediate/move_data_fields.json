@@ -1,0 +1,117 @@
+{
+  "cargofields": {
+    "chara": {
+      "type": "String",
+      "size": "64"
+    },
+    "name": {
+      "type": "String",
+      "size": "64"
+    },
+    "input": {
+      "type": "Wikitext string",
+      "size": "64"
+    },
+    "damage": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "guard": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "startup": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "active": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "recovery": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "onBlock": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "onHit": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "level": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "counter": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "images": {
+      "type": "File",
+      "isList": "",
+      "delimiter": ";"
+    },
+    "hitboxes": {
+      "type": "File",
+      "isList": "",
+      "delimiter": ";"
+    },
+    "notes": {
+      "type": "Wikitext",
+      "isList": "",
+      "delimiter": ";"
+    },
+    "type": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "riscGain": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "riscLoss": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "wallDamage": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "inputTension": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "chipRatio": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "OTGRatio": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "prorate": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "invuln": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "cancel": {
+      "type": "Wikitext string",
+      "size": "128"
+    },
+    "caption": {
+      "type": "Wikitext string",
+      "isList": "",
+      "delimiter": "\\"
+    },
+    "hitboxCaption": {
+      "type": "Wikitext string",
+      "isList": "",
+      "delimiter": "\\"
+    }
+  }
+}
