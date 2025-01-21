@@ -137,7 +137,6 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
   // Extract unique values from currently filtered rows
   const uniqueValues = useMemo(() => {
     const values: Record<string, Set<string>> = {};
-    const filteredRows = table.getFilteredRowModel().rows;
     
     // Get all characters from the original data
     values["character"] = new Set<string>();
@@ -148,11 +147,20 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
       }
     });
 
-    // Get other filter values from filtered rows
+    // Get rows filtered by character selection only
+    const characterFilter = table.getState().columnFilters.find(f => f.id === "character");
+    const rowsToUse = characterFilter 
+      ? data.filter(row => {
+          const charValue = row["character"];
+          return Array.isArray(characterFilter.value) && characterFilter.value.includes(charValue);
+        })
+      : data;
+
+    // Get other filter values from character-filtered rows
     DROPDOWN_FILTER_COLUMNS.filter(col => col !== "character").forEach((columnId) => {
       values[columnId] = new Set<string>();
-      filteredRows.forEach((row) => {
-        const value = row.getValue(columnId);
+      rowsToUse.forEach((row) => {
+        const value = row[columnId];
         if (typeof value === "string") {
           // For level field, split on commas and add each value
           if (columnId === "level") {
@@ -185,7 +193,7 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
         return [key, array.sort()];
       })
     );
-  }, [data, table.getFilteredRowModel().rows]);
+  }, [data, table.getState().columnFilters]);
 
   const filterableColumns = table.getAllColumns().filter(
     (column) => column.columnDef.enableColumnFilter !== false && column.getIsVisible()
