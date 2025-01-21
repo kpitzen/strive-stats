@@ -93,48 +93,6 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
   ]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
-  // Extract unique values for dropdown filters
-  const uniqueValues = useMemo(() => {
-    const values: Record<string, Set<string>> = {};
-    
-    DROPDOWN_FILTER_COLUMNS.forEach((columnId) => {
-      values[columnId] = new Set<string>();
-      data.forEach((row) => {
-        const value = row[columnId];
-        if (typeof value === "string") {
-          // For level field, split on commas and add each value
-          if (columnId === "level") {
-            const levels = value.split(/[,\s]+/);
-            levels.forEach(level => {
-              if (level) values[columnId].add(level);
-            });
-          } else {
-            values[columnId].add(value);
-          }
-        }
-      });
-    });
-
-    // Sort values, with special handling for startup column
-    return Object.fromEntries(
-      Object.entries(values).map(([key, set]) => {
-        const array = Array.from(set);
-        if (key === "startup") {
-          return [key, array.sort((a, b) => getStartupValue(a) - getStartupValue(b))];
-        }
-        if (key === "level") {
-          // Sort levels numerically
-          return [key, array.sort((a, b) => {
-            const numA = parseInt(a, 10) || 0;
-            const numB = parseInt(b, 10) || 0;
-            return numA - numB;
-          })];
-        }
-        return [key, array.sort()];
-      })
-    );
-  }, [data]);
-
   const processedColumns = useMemo(() => 
     columns.map((col) => {
       const key = (col as { accessorKey?: string }).accessorKey;
@@ -176,6 +134,59 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
     },
   });
 
+  // Extract unique values from currently filtered rows
+  const uniqueValues = useMemo(() => {
+    const values: Record<string, Set<string>> = {};
+    const filteredRows = table.getFilteredRowModel().rows;
+    
+    // Get all characters from the original data
+    values["character"] = new Set<string>();
+    data.forEach((row) => {
+      const value = row["character"];
+      if (typeof value === "string") {
+        values["character"].add(value);
+      }
+    });
+
+    // Get other filter values from filtered rows
+    DROPDOWN_FILTER_COLUMNS.filter(col => col !== "character").forEach((columnId) => {
+      values[columnId] = new Set<string>();
+      filteredRows.forEach((row) => {
+        const value = row.getValue(columnId);
+        if (typeof value === "string") {
+          // For level field, split on commas and add each value
+          if (columnId === "level") {
+            const levels = value.split(/[,\s]+/);
+            levels.forEach(level => {
+              if (level) values[columnId].add(level);
+            });
+          } else {
+            values[columnId].add(value);
+          }
+        }
+      });
+    });
+
+    // Sort values, with special handling for startup column
+    return Object.fromEntries(
+      Object.entries(values).map(([key, set]) => {
+        const array = Array.from(set);
+        if (key === "startup") {
+          return [key, array.sort((a, b) => getStartupValue(a) - getStartupValue(b))];
+        }
+        if (key === "level") {
+          // Sort levels numerically
+          return [key, array.sort((a, b) => {
+            const numA = parseInt(a, 10) || 0;
+            const numB = parseInt(b, 10) || 0;
+            return numA - numB;
+          })];
+        }
+        return [key, array.sort()];
+      })
+    );
+  }, [data, table.getFilteredRowModel().rows]);
+
   const filterableColumns = table.getAllColumns().filter(
     (column) => column.columnDef.enableColumnFilter !== false && column.getIsVisible()
   );
@@ -213,11 +224,11 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
         {/* Text filters in an accordion */}
         {textFilterColumns.length > 0 && (
           <Accordion type="single" collapsible>
-            <AccordionItem value="text-filters">
-              <AccordionTrigger className="text-sm font-medium text-gray-700">
+            <AccordionItem value="text-filters" className="border-none">
+              <AccordionTrigger className="text-sm font-medium text-gray-700 py-2 px-4 hover:no-underline hover:bg-gray-200 w-fit rounded">
                 Additional Filters
               </AccordionTrigger>
-              <AccordionContent>
+              <AccordionContent className="pt-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
                   {textFilterColumns.map((column) => (
                     <div key={column.id}>
@@ -232,7 +243,7 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
                         placeholder={getPlaceholderText(column.id)}
                         value={(column.getFilterValue() as string) ?? ""}
                         onChange={(e) => column.setFilterValue(e.target.value)}
-                        className="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       />
                     </div>
                   ))}
