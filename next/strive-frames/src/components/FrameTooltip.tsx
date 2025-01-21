@@ -3,6 +3,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 interface FrameTooltipProps {
   value: string;
@@ -28,11 +29,16 @@ export function FrameTooltip({ value }: FrameTooltipProps) {
   const tooltipText = tooltipMatch[1];
 
   return (
-    <Tooltip>
-      <TooltipTrigger className="cursor-help">{frameValue}</TooltipTrigger>
-      <TooltipContent>
-        <p>{tooltipText}</p>
-      </TooltipContent>
-    </Tooltip>
+    <span className="inline-flex items-center">
+      {frameValue}
+      <Tooltip>
+        <TooltipTrigger className="ml-1">
+          <InfoCircledIcon className="h-4 w-4 text-gray-500 hover:text-gray-700 cursor-help" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{tooltipText}</p>
+        </TooltipContent>
+      </Tooltip>
+    </span>
   );
 } 
