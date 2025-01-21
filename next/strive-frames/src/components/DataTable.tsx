@@ -1,17 +1,21 @@
 "use client";
 
+import React from 'react';
 import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
   useReactTable,
+  getCoreRowModel,
+  flexRender,
   getSortedRowModel,
   SortingState,
   getFilteredRowModel,
   ColumnFiltersState,
-} from "@tanstack/react-table";
+  ColumnDef,
+} from '@tanstack/react-table';
 import { useState, useMemo } from "react";
 import { ArrayCell } from "./ArrayCell";
+import { Table } from './srcl/Table';
+import { TableRow } from './srcl/TableRow';
+import { TableColumn } from './srcl/TableColumn';
 import { DropdownFilter } from "./DropdownFilter";
 import { FrameTooltip } from "./FrameTooltip";
 import {
@@ -26,6 +30,7 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
+import styles from './srcl/Table.module.scss';
 
 const DROPDOWN_FILTER_COLUMNS = ["character", "input", "startup", "guard", "level", "counterType"];
 
@@ -142,6 +147,9 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
   });
 
   // Extract unique values from currently filtered rows
+  const columnFiltersState = table.getState().columnFilters;
+  const characterFilter = columnFiltersState.find(f => f.id === "character");
+
   const uniqueValues = useMemo(() => {
     const values: Record<string, Set<string>> = {};
     
@@ -155,7 +163,6 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
     });
 
     // Get rows filtered by character selection only
-    const characterFilter = table.getState().columnFilters.find(f => f.id === "character");
     const rowsToUse = characterFilter 
       ? data.filter(row => {
           const charValue = row["character"];
@@ -200,7 +207,7 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
         return [key, array.sort()];
       })
     );
-  }, [data, table.getState().columnFilters]);
+  }, [data, characterFilter]);
 
   const filterableColumns = table.getAllColumns().filter(
     (column) => column.columnDef.enableColumnFilter !== false && column.getIsVisible()
@@ -216,103 +223,109 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
 
   return (
     <TooltipProvider>
-      <div className="border border-gray-200">
-        <div className="p-4 bg-gray-100">
-          {/* Dropdown filters in a row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-4">
-            {dropdownColumns.map((column) => (
-              <div key={column.id}>
-                <label
-                  htmlFor={column.id}
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  {column.id === "counterType" ? "Counter" : column.id.charAt(0).toUpperCase() + column.id.slice(1)}
-                </label>
-                <DropdownFilter
-                  column={column}
-                  options={uniqueValues[column.id] || []}
-                  placeholder={getPlaceholderText(column.id)}
-                />
-              </div>
-            ))}
-          </div>
+      <div className="p-4" style={{ background: 'var(--theme-background-modal)' }}>
+        {/* Dropdown filters in a row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-4">
+          {dropdownColumns.map((column) => (
+            <div key={column.id}>
+              <label
+                htmlFor={column.id}
+                className="block text-sm font-medium mb-1"
+                style={{ color: 'var(--theme-text)' }}
+              >
+                {column.id === "counterType" ? "Counter" : column.id.charAt(0).toUpperCase() + column.id.slice(1)}
+              </label>
+              <DropdownFilter
+                column={column}
+                options={uniqueValues[column.id] || []}
+                placeholder={getPlaceholderText(column.id)}
+              />
+            </div>
+          ))}
+        </div>
 
-          {/* Text filters in an accordion */}
-          {textFilterColumns.length > 0 && (
-            <Accordion type="single" collapsible>
-              <AccordionItem value="text-filters" className="border-none">
-                <AccordionTrigger className="text-sm font-medium text-gray-700 py-2 px-4 hover:no-underline hover:bg-gray-200 w-fit rounded">
-                  Additional Filters
-                </AccordionTrigger>
-                <AccordionContent className="pt-4">
-                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                    {textFilterColumns.map((column) => (
-                      <div key={column.id}>
-                        <label
-                          htmlFor={column.id}
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          {column.id.charAt(0).toUpperCase() + column.id.slice(1)}
-                        </label>
-                        <input
-                          id={column.id}
-                          placeholder={getPlaceholderText(column.id)}
-                          value={(column.getFilterValue() as string) ?? ""}
-                          onChange={(e) => column.setFilterValue(e.target.value)}
-                          className="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          )}
-        </div>
-        <div className="overflow-x-auto max-h-[70vh] relative">
-          <table className="w-full border-collapse text-sm">
-            <thead className="sticky top-0 z-10">
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => (
-                    <th
-                      key={header.id}
-                      onClick={header.column.getToggleSortingHandler()}
-                      className="bg-gray-200 px-4 py-3 text-left font-medium text-gray-900 cursor-pointer hover:bg-gray-300 border-b border-gray-300"
-                    >
-                      <div className="flex items-center gap-2">
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                        <span className="text-gray-700">
-                          {{
-                            asc: "↑",
-                            desc: "↓",
-                          }[header.column.getIsSorted() as string] ?? null}
-                        </span>
-                      </div>
-                    </th>
+        {/* Text filters in an accordion */}
+        {textFilterColumns.length > 0 && (
+          <Accordion type="single" collapsible>
+            <AccordionItem value="text-filters" className="border-none">
+              <AccordionTrigger 
+                className="text-sm font-medium py-2 px-4 hover:no-underline w-fit hover:bg-[var(--theme-focused-foreground-subdued)]"
+                style={{ color: 'var(--theme-text)' }}
+              >
+                Additional Filters
+              </AccordionTrigger>
+              <AccordionContent className="pt-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+                  {textFilterColumns.map((column) => (
+                    <div key={column.id}>
+                      <label
+                        htmlFor={column.id}
+                        className="block text-sm font-medium mb-1"
+                        style={{ color: 'var(--theme-text)' }}
+                      >
+                        {column.id.charAt(0).toUpperCase() + column.id.slice(1)}
+                      </label>
+                      <input
+                        id={column.id}
+                        placeholder={getPlaceholderText(column.id)}
+                        value={(column.getFilterValue() as string) ?? ""}
+                        onChange={(e) => column.setFilterValue(e.target.value)}
+                        className="w-full px-3 py-2"
+                        style={{
+                          background: 'var(--theme-background-input)',
+                          color: 'var(--theme-text)',
+                          border: '1px solid var(--theme-border)',
+                        }}
+                      />
+                    </div>
                   ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody className="bg-white">
-              {table.getRowModel().rows.map((row) => (
-                <tr
-                  key={row.id}
-                  className="even:bg-gray-100 hover:bg-gray-200 border-b border-gray-200 last:border-0"
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className="px-4 py-3 text-gray-900">
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        )}
+      </div>
+
+      <div className={styles.root}>
+        <Table>
+          <thead>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <TableColumn
+                    key={header.id}
+                    onClick={header.column.getToggleSortingHandler()}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <div className="flex items-center gap-2">
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                      <span style={{ color: 'var(--theme-text)' }}>
+                        {{
+                          asc: "↑",
+                          desc: "↓",
+                        }[header.column.getIsSorted() as string] ?? null}
+                      </span>
+                    </div>
+                  </TableColumn>
+                ))}
+              </TableRow>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map((row) => (
+              <TableRow key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <TableColumn key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableColumn>
+                ))}
+              </TableRow>
+            ))}
+          </tbody>
+        </Table>
       </div>
     </TooltipProvider>
   );

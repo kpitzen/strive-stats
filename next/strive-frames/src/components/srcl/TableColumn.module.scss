@@ -1,0 +1,22 @@
+.root {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-family: var(--font-mono);
+  border-right: 1px solid var(--theme-border);
+  background: var(--theme-background);
+  
+  &:last-child {
+    border-right: none;
+  }
+}
+
+th.root {
+  font-weight: 600;
+  background: var(--theme-background-modal);
+  border-bottom: 1px solid var(--theme-border);
+  box-shadow: 0 2px 4px var(--theme-background);
+  
+  &:hover {
+    background: var(--theme-background-modal-footer);
+  }
+} 

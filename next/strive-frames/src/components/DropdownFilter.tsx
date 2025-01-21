@@ -25,13 +25,12 @@ export function DropdownFilter<T>({
   );
 
   const isMultiSelect = column.id === "character" || column.id === "input";
+  const mappedOptions = options.map(option => ({
+    label: option,
+    value: option,
+  }));
 
   if (isMultiSelect) {
-    const mappedOptions = options.map(option => ({
-      label: option,
-      value: option,
-    }));
-
     const selectedValues = (column.getFilterValue() as string[] | undefined) || [];
     const selectedOptions = mappedOptions.filter(option => 
       selectedValues.includes(option.value)
@@ -43,25 +42,27 @@ export function DropdownFilter<T>({
         selected={selectedOptions}
         onChange={handleChange}
         placeholder={placeholder}
+        isMulti={true}
       />
     );
   }
 
+  const currentValue = (column.getFilterValue() as string) ?? "";
+  const selectedOptions = currentValue ? [mappedOptions.find(opt => opt.value === currentValue)!] : [];
+
   return (
-    <select
-      id={column.id}
-      value={(column.getFilterValue() as string) ?? ""}
-      onChange={(e) => column.setFilterValue(e.target.value === "" ? undefined : e.target.value)}
-      className="w-full px-3 py-2 bg-white border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-    >
-      <option value="" className="text-gray-500">
-        {placeholder}
-      </option>
-      {options.map((option) => (
-        <option key={option} value={option} className="text-gray-900">
-          {option}
-        </option>
-      ))}
-    </select>
+    <MultiSelect
+      options={mappedOptions}
+      selected={selectedOptions}
+      onChange={(selected) => {
+        if (selected.length === 0) {
+          column.setFilterValue(undefined);
+        } else {
+          column.setFilterValue(selected[selected.length - 1].value);
+        }
+      }}
+      placeholder={placeholder}
+      isMulti={false}
+    />
   );
 } 

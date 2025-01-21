@@ -31,13 +31,13 @@ function parseColorfulText(text: string): React.ReactNode[] {
       return (
         <span 
           key={index} 
-          className={cn({
-            'text-purple-500': number === '1', // P
-            'text-blue-500': number === '2',   // K
-            'text-red-500': number === '3',    // S
-            'text-yellow-500': number === '4', // H
-            'text-green-500': number === '5',  // D
-          })}
+          className={cn(
+            'text-[var(--theme-text)]',
+            {
+              'text-[var(--success-bg)]': number === '5',  // D
+              'text-[var(--theme-focused-foreground)]': number === '2',   // K
+            }
+          )}
         >
           {content}
         </span>
@@ -55,7 +55,7 @@ export function NotesIcon({ notes }: NotesIconProps) {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <InfoCircledIcon className="inline-block ml-2 w-4 h-4 flex-shrink-0 text-gray-500 hover:text-gray-700 cursor-help" />
+          <InfoCircledIcon className="inline-block ml-2 w-4 h-4 flex-shrink-0 text-[var(--theme-text-subdued)] hover:text-[var(--theme-text)] cursor-help" />
         </TooltipTrigger>
         <TooltipContent>
           <p className="max-w-xs whitespace-pre-wrap">

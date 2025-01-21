@@ -1,0 +1,15 @@
+.root {
+  border-bottom: 1px solid var(--theme-border);
+  
+  &:hover {
+    background: var(--theme-focused-foreground-subdued);
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:nth-child(even) {
+    background: var(--theme-background-modal);
+  }
+} 

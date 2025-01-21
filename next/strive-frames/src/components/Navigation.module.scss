@@ -1,0 +1,30 @@
+.root {
+  width: 100%;
+  background: var(--theme-background-modal);
+  border-bottom: 1px solid var(--theme-border);
+  padding: 1rem;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+  font-family: var(--font-mono);
+}
+
+.content a {
+  color: var(--theme-text);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background: var(--theme-focused-foreground-subdued);
+  }
+  
+  &.active {
+    background: var(--success-bg);
+    color: var(--success-text);
+  }
+} 

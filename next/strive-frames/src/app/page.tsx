@@ -16,7 +16,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <Link
             href="/normal-moves"
-            className="p-6 bg-bg-secondary shadow hover:shadow-md transition-shadow"
+            className="p-6 bg-bg-secondary shadow hover:shadow-md transition-all hover:bg-[var(--success-bg)] hover:text-[var(--success-text)]"
           >
             <h2 className="text-2xl font-semibold mb-2 text-text-primary">Normal Moves</h2>
             <p className="text-text-secondary">View normal attack properties</p>
@@ -24,7 +24,7 @@ export default function HomePage() {
 
           <Link
             href="/special-moves"
-            className="p-6 bg-bg-secondary shadow hover:shadow-md transition-shadow"
+            className="p-6 bg-bg-secondary shadow hover:shadow-md transition-all hover:bg-[var(--success-bg)] hover:text-[var(--success-text)]"
           >
             <h2 className="text-2xl font-semibold mb-2 text-text-primary">Special Moves</h2>
             <p className="text-text-secondary">View special move properties</p>
@@ -32,7 +32,7 @@ export default function HomePage() {
 
           <Link
             href="/overdrive-moves"
-            className="p-6 bg-bg-secondary shadow hover:shadow-md transition-shadow"
+            className="p-6 bg-bg-secondary shadow hover:shadow-md transition-all hover:bg-[var(--success-bg)] hover:text-[var(--success-text)]"
           >
             <h2 className="text-2xl font-semibold mb-2 text-text-primary">Overdrive Moves</h2>
             <p className="text-text-secondary">View overdrive move properties</p>

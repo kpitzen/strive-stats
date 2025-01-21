@@ -1,0 +1,111 @@
+@use './styles/srcl.scss' as *;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* SRCL Colors */
+  --color-black-100: #000000;
+  --color-black-100-4: rgba(0, 0, 0, 0.4);
+  --color-white: #ffffff;
+  --color-gray-20: #333333;
+  --color-gray-30: #4d4d4d;
+  --color-gray-60: #999999;
+  --color-gray-70: #b3b3b3;
+  --color-gray-70-3: rgba(179, 179, 179, 0.3);
+  --color-gray-80: #cccccc;
+  --color-neon-green-50: #00ff00;
+  --color-neon-green-50-5: rgba(0, 255, 0, 0.05);
+
+  /* Base colors */
+  --background: #ffffff;
+  --foreground: #374151;    /* gray-700 - base text color */
+
+  /* Text colors */
+  --text-primary: #111827;    /* gray-900 - headings */
+  --text-secondary: #6b7280;  /* gray-500 - supporting text */
+  
+  /* Background colors */
+  --bg-primary: #ffffff;      /* white */
+  --bg-secondary: #f3f4f6;    /* gray-100 */
+  
+  /* Success colors */
+  --success-bg: #4ade80;      /* green-400 */
+  --success-text: #052e16;    /* green-950 */
+  
+  /* Effects */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  --font-mono: 'GeistMono-Regular', ui-monospace, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #111827;    /* gray-900 */
+    --foreground: #d1d5db;    /* gray-300 - base text color */
+    
+    /* Text colors - dark mode */
+    --text-primary: #ffffff;    /* white - headings */
+    --text-secondary: #9ca3af;  /* gray-400 - supporting text */
+    
+    /* Background colors - dark mode */
+    --bg-primary: #111827;      /* gray-900 */
+    --bg-secondary: #030712;    /* gray-950 */
+
+    /* Success colors - dark mode (keeping same for now) */
+    --success-bg: #4ade80;      /* green-400 */
+    --success-text: #052e16;    /* green-950 */
+
+    /* Effects - dark mode */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-mono);
+  background: var(--theme-background);
+  color: var(--theme-text);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Default to dark theme */
+body {
+  --theme-overlay: var(--color-black-100-4);
+  --theme-background: var(--color-black-100);
+  --theme-background-modal: var(--color-gray-80);
+  --theme-background-modal-footer: var(--color-gray-70);
+  --theme-background-input: var(--color-gray-60);
+  --theme-border: var(--color-gray-80);
+  --theme-border-subdued: var(--color-gray-70-3);
+  --theme-text: var(--color-white);
+  --theme-button: var(--color-white);
+  --theme-button-text: var(--color-black-100);
+  --theme-button-foreground: var(--color-gray-30);
+  --theme-button-background: var(--color-gray-20);
+  --theme-focused-foreground: var(--color-neon-green-50);
+  --theme-focused-foreground-subdued: var(--color-neon-green-50-5);
+} 

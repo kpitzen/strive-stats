@@ -15,6 +15,7 @@
     "@radix-ui/react-select": "^2.1.4",
     "@radix-ui/react-tooltip": "^1.1.6",
     "@vercel/postgres": "^0.10.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.4",
     "drizzle-orm": "^0.38.4",
@@ -26,6 +27,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-error-boundary": "^5.0.0",
+    "sass": "^1.83.4",
+    "scss": "^0.2.4",
     "tailwind-merge": "^2.6.0",
     "tls": "^0.0.1"
   },

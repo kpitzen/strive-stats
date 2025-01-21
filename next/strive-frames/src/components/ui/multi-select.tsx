@@ -16,6 +16,7 @@ interface MultiSelectProps {
   onChange: (options: Option[]) => void;
   placeholder?: string;
   className?: string;
+  isMulti?: boolean;
 }
 
 export function MultiSelect({
@@ -24,6 +25,7 @@ export function MultiSelect({
   onChange,
   placeholder = "Select options...",
   className,
+  isMulti = true,
 }: MultiSelectProps) {
   const [open, setOpen] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -63,7 +65,12 @@ export function MultiSelect({
     <Command className={cn("overflow-visible bg-transparent relative", className)}>
       <div 
         ref={containerRef}
-        className="group border border-gray-300 px-3 py-2 text-sm focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent bg-white"
+        style={{
+          background: 'var(--theme-background-input)',
+          borderColor: 'var(--theme-border)',
+          color: 'var(--theme-text)',
+        }}
+        className="group border px-3 py-2 text-sm focus-within:ring-2 focus-within:ring-[var(--success-bg)] focus-within:border-transparent"
         onClick={() => {
           inputRef.current?.focus();
           setOpen(true);
@@ -73,12 +80,11 @@ export function MultiSelect({
           {selected.map((option) => (
             <Badge
               key={option.value}
-              variant="secondary"
-              className="px-1 font-normal"
+              className="px-1 font-normal bg-[var(--success-bg)] text-[var(--success-text)]"
             >
               {option.label}
               <button
-                className="ml-1 ring-offset-background outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+                className="ml-1 outline-none"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     handleUnselect(option);
@@ -93,7 +99,7 @@ export function MultiSelect({
                   handleUnselect(option);
                 }}
               >
-                <X className="h-3 w-3 text-muted-foreground hover:text-foreground" />
+                <X className="h-3 w-3" />
               </button>
             </Badge>
           ))}
@@ -101,6 +107,9 @@ export function MultiSelect({
             ref={inputRef}
             onFocus={handleFocus}
             placeholder={selected.length === 0 ? placeholder : undefined}
+            style={{
+              color: 'var(--theme-text)',
+            }}
             className="flex-1 bg-transparent outline-none placeholder:text-gray-500 min-w-[50px]"
           />
         </div>
@@ -108,7 +117,11 @@ export function MultiSelect({
       {open && (
         <div 
           ref={dropdownRef}
-          className="absolute left-0 right-0 z-50 border bg-white shadow-md outline-none animate-in mt-2" 
+          style={{
+            background: 'var(--theme-background-modal)',
+            borderColor: 'var(--theme-border)',
+          }}
+          className="absolute left-0 right-0 z-50 border shadow-md outline-none animate-in mt-2" 
         >
           <CommandGroup className="h-full overflow-auto max-h-60">
             {options.map((option) => {
@@ -116,28 +129,44 @@ export function MultiSelect({
               return (
                 <div
                   key={option.value}
-                  className="flex items-center px-2 py-1.5 text-sm cursor-pointer hover:bg-gray-100"
+                  style={{
+                    color: 'var(--theme-text)',
+                    background: 'transparent',
+                  }}
+                  className={cn(
+                    "flex items-center px-2 py-1.5 text-sm cursor-pointer",
+                    "hover:bg-[var(--theme-focused-foreground-subdued)]",
+                    !isMulti && "pl-4"
+                  )}
                   onMouseDown={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    if (isSelected) {
-                      onChange(selected.filter((s) => s.value !== option.value));
+                    if (isMulti) {
+                      if (isSelected) {
+                        onChange(selected.filter((s) => s.value !== option.value));
+                      } else {
+                        onChange([...selected, option]);
+                      }
                     } else {
-                      onChange([...selected, option]);
+                      onChange([option]);
+                      setOpen(false);
                     }
                     inputRef.current?.focus();
                   }}
                 >
                   <div
+                    style={{
+                      borderColor: 'var(--theme-border)',
+                      background: isSelected ? 'var(--success-bg)' : 'transparent',
+                      color: isSelected ? 'var(--success-text)' : 'inherit'
+                    }}
                     className={cn(
-                      "mr-2 flex h-4 w-4 items-center justify-center border border-gray-300",
-                      isSelected
-                        ? "bg-blue-500 text-white"
-                        : "opacity-50 [&_svg]:invisible"
+                      "mr-2 flex h-4 w-4 items-center justify-center border",
+                      isSelected && "border-transparent"
                     )}
                   >
                     <svg
-                      className={cn("h-4 w-4")}
+                      className={cn("h-4 w-4", !isSelected && "invisible")}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"

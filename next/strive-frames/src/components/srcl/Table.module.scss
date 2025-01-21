@@ -1,0 +1,21 @@
+.root {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  background: var(--theme-background);
+  color: var(--theme-text);
+  border: 1px solid var(--theme-border);
+  max-height: 70vh;
+  display: block;
+  overflow-y: auto;
+  
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  tbody {
+    border-top: 1px solid var(--theme-border);
+  }
+} 
