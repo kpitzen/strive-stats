@@ -143,11 +143,14 @@ export function DataTable<TData extends Record<string, unknown>, TValue>({
     state: {
       sorting,
       columnFilters,
+      columnVisibility: {
+        notes: false
+      }
     },
   });
 
   const filterableColumns = table.getAllColumns().filter(
-    (column) => column.columnDef.enableColumnFilter !== false
+    (column) => column.columnDef.enableColumnFilter !== false && column.getIsVisible()
   );
 
   const dropdownColumns = filterableColumns.filter((column) =>

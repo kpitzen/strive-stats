@@ -4,7 +4,8 @@ import { DataTable } from "@/components/DataTable";
 import { ColumnDef } from "@tanstack/react-table";
 import { ColumnHeader } from "@/components/ColumnHeader";
 import { TableHeader } from "@/components/TableHeader";
-import { createColumn } from "@/components/ColumnDef";
+import { createColumn, createHiddenColumn } from "@/components/ColumnDef";
+import { NotesIcon } from "@/components/NotesIcon";
 
 interface NormalMoves extends Record<string, unknown> {
   id: number;
@@ -27,6 +28,7 @@ interface NormalMoves extends Record<string, unknown> {
   proration: string | null;
   riscGain: string | null;
   riscLoss: string | null;
+  notes: string | null;
 }
 
 const columns: ColumnDef<NormalMoves>[] = [
@@ -42,8 +44,19 @@ const columns: ColumnDef<NormalMoves>[] = [
         <ColumnHeader title="Input" tooltip="Input command for the move" />
       </TableHeader>
     ),
+    cell: ({ row }) => {
+      const input = row.getValue("input") as string;
+      const notes = row.getValue("notes") as string | null;
+      return (
+        <div className="flex items-center">
+          <span>{input}</span>
+          <NotesIcon notes={notes} />
+        </div>
+      );
+    },
     size: 100,
   }),
+  createHiddenColumn<NormalMoves>("notes"),
   createColumn<NormalMoves>({
     accessorKey: "damage",
     header: (

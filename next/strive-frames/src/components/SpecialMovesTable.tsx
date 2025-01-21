@@ -4,7 +4,8 @@ import { DataTable } from "@/components/DataTable";
 import { ColumnDef } from "@tanstack/react-table";
 import { ColumnHeader } from "@/components/ColumnHeader";
 import { TableHeader } from "@/components/TableHeader";
-import { createColumn } from "@/components/ColumnDef";
+import { createColumn, createHiddenColumn } from "@/components/ColumnDef";
+import { NotesIcon } from "@/components/NotesIcon";
 
 interface SpecialMoves extends Record<string, unknown> {
   id: number;
@@ -28,6 +29,7 @@ interface SpecialMoves extends Record<string, unknown> {
   proration: string | null;
   riscGain: string | null;
   riscLoss: string | null;
+  notes: string | null;
 }
 
 const columns: ColumnDef<SpecialMoves>[] = [
@@ -43,8 +45,19 @@ const columns: ColumnDef<SpecialMoves>[] = [
         <ColumnHeader title="Name" tooltip="Name of the special move" />
       </TableHeader>
     ),
+    cell: ({ row }) => {
+      const name = row.getValue("name") as string;
+      const notes = row.getValue("notes") as string | null;
+      return (
+        <div className="flex items-center">
+          <span>{name}</span>
+          <NotesIcon notes={notes} />
+        </div>
+      );
+    },
     size: 200,
   }),
+  createHiddenColumn<SpecialMoves>("notes"),
   createColumn<SpecialMoves>({
     accessorKey: "input",
     header: (
