@@ -84,6 +84,7 @@ export const normalMoves = pgTable("normal_moves", {
   proration: varchar("proration"),
   riscGain: varchar("risc_gain"),
   riscLoss: varchar("risc_loss"),
+  notes: varchar("notes"),
 });
 
 export const specialMoves = pgTable("special_moves", {
@@ -108,6 +109,7 @@ export const specialMoves = pgTable("special_moves", {
   proration: varchar("proration"),
   riscGain: varchar("risc_gain"),
   riscLoss: varchar("risc_loss"),
+  notes: varchar("notes"),
 });
 
 export const overdriveMoves = pgTable("overdrive_moves", {
@@ -132,6 +134,7 @@ export const overdriveMoves = pgTable("overdrive_moves", {
   proration: varchar("proration"),
   riscGain: varchar("risc_gain"),
   riscLoss: varchar("risc_loss"),
+  notes: varchar("notes"),
 });
 
 export const characterSpecificTables = pgTable("character_specific_tables", {
