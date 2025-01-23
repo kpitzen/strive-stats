@@ -3,11 +3,14 @@
 import { useState, useCallback, useEffect } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
+import { isMobile } from 'react-device-detect';
 import styles from './TierMaker.module.scss';
 import { DraggableTierRow } from './components/DraggableTierRow';
 import { CharacterPool } from './components/CharacterPool';
 import { deserializeState, generateShareableUrl } from './utils/stateManagement';
 import { useSearchParams } from 'next/navigation';
+import { DragPreview } from './components/DragPreview';
 
 interface Tier {
   id: string;
@@ -153,7 +156,7 @@ export function TierMakerClient() {
   }, []);
 
   return (
-    <DndProvider backend={HTML5Backend}>
+    <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
       <div className={styles.container}>
         <h1>Guilty Gear Strive Tier Maker</h1>
         <div className={styles.controls}>
@@ -203,6 +206,7 @@ export function TierMakerClient() {
           Share URL copied to clipboard!
         </div>
       </div>
+      <DragPreview />
     </DndProvider>
   );
 } 

@@ -1,5 +1,4 @@
 import { useDrag } from 'react-dnd';
-import type { DragSourceMonitor } from 'react-dnd';
 import styles from '../TierMaker.module.scss';
 import { getCharacterIconUrl } from '../utils/characterIcons';
 import Image from 'next/image';
@@ -15,15 +14,11 @@ interface DragItem {
   type: string;
 }
 
-export const DraggableCharacter = ({ name, tierId }: DraggableCharacterProps) => {
-  const [{ isDragging }, dragRef] = useDrag<
-    DragItem,
-    void,
-    { isDragging: boolean }
-  >({
+export const DraggableCharacter: React.FC<DraggableCharacterProps> = ({ name, tierId }) => {
+  const [{ isDragging }, dragRef] = useDrag<DragItem, unknown, { isDragging: boolean }>({
     type: 'character',
     item: { name, sourceTierId: tierId, type: 'character' },
-    collect: (monitor: DragSourceMonitor) => ({
+    collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
   });
@@ -36,13 +31,7 @@ export const DraggableCharacter = ({ name, tierId }: DraggableCharacterProps) =>
       style={{ opacity: isDragging ? 0.5 : 1 }}
       title={name}
     >
-      <Image
-        src={getCharacterIconUrl(name)}
-        alt={name}
-        width={170}
-        height={170}
-        priority
-      />
+      <Image src={getCharacterIconUrl(name)} alt={name} width={100} height={100} priority />
     </div>
   );
 }; 
