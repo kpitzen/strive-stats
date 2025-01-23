@@ -18,6 +18,7 @@
   text-decoration: none;
   padding: 0.5rem 1rem;
   transition: background-color 0.2s;
+  white-space: nowrap;
   
   &:hover {
     background: #333;
@@ -26,5 +27,30 @@
   &.active {
     background: #444;
     color: white;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1rem;
+  }
+
+  .content a {
+    display: block;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .root {
+    padding: 0.5rem;
+  }
+  
+  .content {
+    gap: 0.25rem;
   }
 } 

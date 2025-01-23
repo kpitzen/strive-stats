@@ -2,18 +2,18 @@
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+}
 
-  h1 {
-    text-align: left;
-    margin-bottom: 2rem;
-    color: var(--theme-text);
-    font-family: var(--font-mono);
-    font-size: 1.5rem;
-    font-weight: 500;
-    background: var(--theme-background-modal);
-    padding: 1rem;
-    border-radius: 2px;
-  }
+.title {
+  text-align: left;
+  margin-bottom: 2rem;
+  color: var(--theme-text);
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 500;
+  background: var(--theme-background-modal);
+  padding: 1rem;
+  border-radius: 2px;
 }
 
 .controls {
@@ -356,5 +356,48 @@
   .addTierButton {
     flex: 1;
     min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .tierRow {
+    padding: 0.75rem;
+  }
+
+  .character {
+    width: 45px;
+    height: 45px;
+  }
+
+  .characterPool {
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .characterIcon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .characterName {
+    font-size: 0.7rem;
+    max-width: 70px;
+  }
+
+  .toast {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    text-align: center;
   }
 } 

@@ -40,6 +40,12 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 
   --font-mono: 'GeistMono-Regular', ui-monospace, monospace;
+  
+  /* Responsive breakpoints */
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1200px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -79,12 +85,24 @@ body {
   font-family: var(--font-mono);
   background: var(--theme-background);
   color: var(--theme-text);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-size: 16px;
+  line-height: 1.5;
+  
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 }
 
 a {
@@ -108,4 +126,41 @@ body {
   --theme-button-background: var(--color-gray-20);
   --theme-focused-foreground: var(--color-neon-green-50);
   --theme-focused-foreground-subdued: var(--color-neon-green-50-5);
+}
+
+/* Responsive container widths */
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  
+  @media (min-width: 640px) {
+    max-width: 640px;
+  }
+  
+  @media (min-width: 768px) {
+    max-width: 768px;
+  }
+  
+  @media (min-width: 1024px) {
+    max-width: 1024px;
+  }
+  
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  * {
+    cursor: default !important;
+  }
+  
+  a:hover,
+  button:hover {
+    opacity: 1 !important;
+  }
 } 
