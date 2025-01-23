@@ -4,6 +4,7 @@
   font-family: var(--font-mono);
   border-right: 1px solid var(--theme-border);
   background: var(--theme-background);
+  min-width: 80px;
   
   &:last-child {
     border-right: none;
@@ -15,8 +16,27 @@ th.root {
   background: var(--theme-background-modal);
   border-bottom: 1px solid var(--theme-border);
   box-shadow: 0 2px 4px var(--theme-background);
+  white-space: nowrap;
   
   &:hover {
     background: var(--theme-background-modal-footer);
+  }
+}
+
+@media (max-width: 768px) {
+  .root {
+    padding: 0.5rem 0.75rem;
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .root {
+    padding: 0.5rem;
+    min-width: 60px;
+  }
+  
+  th.root {
+    font-size: 0.9em;
   }
 } 

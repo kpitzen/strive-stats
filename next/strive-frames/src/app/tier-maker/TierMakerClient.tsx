@@ -158,7 +158,7 @@ export function TierMakerClient() {
   return (
     <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
       <div className={styles.container}>
-        <h1>Guilty Gear Strive Tier Maker</h1>
+        <h1 className={styles.title}>Guilty Gear Strive Tier Maker</h1>
         <div className={styles.controls}>
           <button 
             className={styles.addTierButton}
