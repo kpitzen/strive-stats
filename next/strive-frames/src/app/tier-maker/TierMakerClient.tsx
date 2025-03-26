@@ -32,7 +32,7 @@ const characters = [
   'Chipp Zanuff', 'Elphelt Valentine', 'Faust', 'Giovanna', 'Goldlewis Dickinson',
   'Happy Chaos', 'I-No', 'Jack-O', 'Johnny', 'Ky Kiske', 'Leo Whitefang',
   'May', 'Millia Rage', 'Nagoriyuki', 'Potemkin', 'Queen Dizzy', 'Ramlethal Valentine',
-  'Sin Kiske', 'Slayer', 'Sol Badguy', 'Testament', 'Zato-1'
+  'Sin Kiske', 'Slayer', 'Sol Badguy', 'Testament', 'Venom', 'Zato-1'
 ];
 
 export function TierMakerClient() {

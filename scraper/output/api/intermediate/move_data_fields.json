@@ -87,7 +87,7 @@
       "type": "Wikitext string",
       "size": "128"
     },
-    "OTGRatio": {
+    "OTGType": {
       "type": "Wikitext string",
       "size": "128"
     },

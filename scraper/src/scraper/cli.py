@@ -363,7 +363,7 @@ def import_api_data(
             for entry in data['cargoquery']:
                 move = entry['title']
                 char = move['chara']
-                move_type = move['type']
+                move_type = move.get('type', '').lower()
                 
                 if char not in moves_by_char:
                     moves_by_char[char] = {

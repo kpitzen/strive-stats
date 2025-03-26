@@ -19,7 +19,7 @@ const CHARACTERS = [
   'Sol', 'Ky', 'May', 'Axl', 'Chipp', 'Potemkin', 'Faust', 
   'Millia', 'Zato', 'Ramlethal', 'Leo', 'Nagoriyuki', 'Giovanna', 
   'Anji', 'I-No', 'Goldlewis', 'Jack-O', 'Happy Chaos', 'Baiken', 
-  'Testament', 'Sin', 'Bridget', 'Asuka'
+  'Testament', 'Sin', 'Bridget', 'Asuka', 'Venom'
 ];
 
 export const TierMaker = () => {
